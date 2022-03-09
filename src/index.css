@@ -1,42 +1,116 @@
+/* Typefaces */
 @font-face {
   font-family: 'JetBrainsMono-Light';
   src: local('JetBrainsMono-Light'), url('./fonts/JetBrainsMono-Light.woff') format('woff');
-}
-
-body {
-  margin: 0;
-  font-family: 'JetBrainsMono-Light';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+@font-face {
+  font-family: 'Ribes-Black';
+  src: local('Ribes-Black'), url('./fonts/Ribes-Black.woff') format('woff');
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Body */
+body {
+  color: #231F20;
+  font-family: 'JetBrainsMono-Light';
+  margin: 0;
+}
+
+/* Site Header/Logo */
+.siteLogoContainer {
+  align-items: center;
+  display: flex;
+  height: 50px;
+  justify-content: center;
+  left: 0;
+  position: sticky;
+  right: 0;
+  top: 0;
+  z-index: 1000;
+ }
+
+ .siteLogo {
+  margin-top: 0.75rem;
+ }
+
+ .siteLogo:hover {
+  cursor: pointer;
+ }
+
+/* Navbar */
+.navbarContainer {
+  align-items: center;
+  background-color: #D9D7C5;
+  bottom: 0;
+  display: flex;
+  height: 95px;
+  justify-content: center;
+  left: 0;
+  position: fixed;
+  right: 0;
+  z-index: 1000;
+}
+
+.navbarNav {
+  margin-top: 0.75rem;
+  overflow-y: hidden;
+  width: 100%;
+}
+
+.navbarListItemsContainer {
+  align-items: center;
+  display: flex;
+  font-family: 'Ribes-Black';
+  font-size: 20px;
+  justify-content: space-evenly;
+  margin: 0;
+  padding: 0;
+}
+
+.navbarListItem {
+  align-items: center;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+}
+
+.navbarListItemName {
+  margin-top: 0.25rem;
+  color: #7c797b;
+}
+
+.navbarListItemNameActive {
+  margin-top: 0.25rem;
+  color: #231F20;
 }
 
 /* Loading Spinner */
 .loadingSpinnerContainer {
-  position: fixed;
-  top: 0;
-  right: 0;
-  bottom: 0;
-  left: 0;
+  align-items: center;
   background-color: rgba(0, 0, 0, 0.5);
-  z-index: 5000;
+  bottom: 0;
   display: flex;
   justify-content: center;
-  align-items: center;
+  left: 0;
+  position: fixed;
+  right: 0;
+  top: 0;
+  z-index: 5000;
 }
 
 .loadingSpinner {
-  width: 64px;
-  height: 64px;
+  animation: spin 1.4s linear infinite;
   border: 8px solid;
   border-color: #73241D transparent #73241D transparent;
   border-radius: 50%;
-  animation: spin 1.2s linear infinite;
+  height: 64px;
+  width: 64px;
 }
+
 @keyframes spin {
   0% {
     transform: rotate(0deg);
