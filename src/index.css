@@ -4,13 +4,19 @@
   src: local('JetBrainsMono-Light'), url('./fonts/JetBrainsMono-Light.woff') format('woff');
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
 }
 
 @font-face {
-  font-family: 'Ribes-Black';
-  src: local('Ribes-Black'), url('./fonts/Ribes-Black.woff') format('woff');
+  font-family: 'PP Agrandir Text';
+  src: local('PP Agrandir Text'), url('./fonts/PPAgrandirText-Bold.woff') format('woff');
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  font-weight: bold;
+  font-style: normal;
+  font-display: swap;
 }
 
 /* Body */
@@ -64,8 +70,8 @@ body {
 .navbarListItemsContainer {
   align-items: center;
   display: flex;
-  font-family: 'Ribes-Black';
-  font-size: 20px;
+  font-family: 'PP Agrandir Text';
+  font-size: 16px;
   justify-content: space-evenly;
   margin: 0;
   padding: 0;
@@ -117,5 +123,134 @@ body {
   }
   100% {
     transform: rotate(360deg);
+  }
+}
+
+/* Page Container Login/Signup - need to tidy into correct sections */
+.pageContainer,
+.offers,
+.profile,
+.listingDetails,
+.category,
+.explore {
+  margin: 1rem;
+}
+@media (min-width: 1024px) {
+  .pageContainer,
+  .offers,
+  .profile,
+  .listingDetails,
+  .category,
+  .explore {
+    margin: 3rem;
+  }
+}
+
+.pageHeader {
+  font-size: 2rem;
+  font-weight: 800;
+  text-align: center;
+}
+
+.mainDivPageContent {
+  text-align: center;
+  margin-top: 4rem;
+  width: 100%;
+}
+
+.pageParagraph {
+  display: inline-flex;
+  font-size: 14px;
+  margin-bottom: 3rem;
+}
+
+.input,
+.passwordInput,
+.emailInput,
+.nameInput,
+.textarea {
+  background: #ffffff;
+  border: 1.6px #231F20;
+  border-style: hidden hidden solid hidden;
+  font-family: 'JetBrainsMono-Light';
+  font-size: 14px;
+  height: 2rem;
+  margin-left: 2rem;
+  padding-right: 8rem;
+}
+
+.passwordInputDiv {
+  position: relative;
+}
+
+/* Need to fix show password icon in Desktop aspect ratio! */
+.showPassword {
+  cursor: pointer;
+  padding: 1rem;
+  position: absolute;
+  right: 1%;
+  top: -4%;
+}
+
+.forgotPasswordLink, .signUpLink, .signInLink {
+  color: #231F20;
+  cursor: pointer;
+  font-size: 12px;
+}
+
+.forgotPasswordTextDiv, .signUpTextDiv {
+  margin-bottom: 1.5rem;
+}
+
+.signInBar,
+.signUpBar {
+  align-items: center;
+  bottom: 0;
+  display: flex;
+  justify-content: center;
+  left: 0; 
+  margin-bottom: 8rem;
+  position: absolute;
+  right: 0;
+}
+
+.signInButton,
+.signUpButton,
+.signInText,
+.signUpText {
+  cursor: pointer;
+}
+@media (min-width: 1024px) {
+  .signInBar,
+  .signUpBar {
+    justify-content: center;
+  }
+}
+
+.signInText,
+.signUpText {
+  font-size: 1.5rem;
+  font-weight: 700;
+}
+
+.signInButton,
+.signUpButton {
+  align-items: center;
+  background-color: #73241D;
+  border: none;
+  border-radius: 20px;
+  color: #F0F0F2;
+  display: flex;
+  font-size: 20px;
+  font-family: 'JetBrainsMono-Light';
+  justify-content: center;
+  padding: 0.5rem;
+  width: 10rem;
+}
+
+@media (min-width: 1024px) {
+  .signInButton,
+  .signUpButton {
+    margin-left: 3rem;
   }
 }

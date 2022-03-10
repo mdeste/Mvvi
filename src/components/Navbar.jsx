@@ -22,7 +22,7 @@ function Navbar() {
             width='36px' 
             height='36px' />
             <p className={pathMatchRoute('/about') ? 'navbarListItemNameActive' : 'navbarListItemName'}>
-              about
+              About
             </p>
           </li>
           <li className="navbarListItem" onClick={() => navigate('/user-list')}>
@@ -30,7 +30,7 @@ function Navbar() {
             width='36px' 
             height='36px' />
             <p className={pathMatchRoute('/user-list') ? 'navbarListItemNameActive' : 'navbarListItemName'}>
-              watchlist
+              Watchlist
             </p>
           </li>
           <li className="navbarListItem" onClick={() => navigate('/profile')}>
@@ -38,7 +38,7 @@ function Navbar() {
             width='36px' 
             height='36px' />
             <p className={pathMatchRoute('/profile') ? 'navbarListItemNameActive' : 'navbarListItemName'}>
-              profile
+              Profile
             </p>
           </li>
         </ul>
