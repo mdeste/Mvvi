@@ -32,7 +32,7 @@ function SignIn() {
         <p className="pageParagraph">&nbsp;&nbsp;&nbsp;Email:</p>
         <input type="email" 
         className="emailInput" 
-        placeholder="example@example.com" 
+        placeholder="Please enter email" 
         id="email" 
         value={email} 
         onChange={onChange}/>
@@ -42,13 +42,13 @@ function SignIn() {
         <p className="pageParagraph">Password:</p>
         <input type={showPassword ? 'text' : 'password'} 
         className="passwordInput" 
-        placeholder="Password" 
+        placeholder="Please enter password" 
         id="password" 
         value={password} 
         onChange={onChange}/>
         <img src={visibilityIcon} 
         alt="show password" 
-        className="showPassword" 
+        className="showPasswordIcon" 
         onClick={() => setShowpassword((prevState) => !prevState)}/>
         </div>
 
@@ -64,8 +64,8 @@ function SignIn() {
         </Link>
         </div>
 
-        <div className="signInBar">
-        <button className="signInButton">LOG IN</button>
+        <div className="logInBar">
+        <button className="logInButton">LOG IN</button>
         </div>
       </form>
 

@@ -25,15 +25,15 @@ function SignUp() {
     <>
     <div className="pageContainer">
     <header>
-      <p className="pageHeader">LOG IN</p>
+      <p className="pageHeader">SIGN UP</p>
     </header>
     <main className="mainDivPageContent">
       <form>
-      <div className="nameInputDiv">
-        <p className="pageParagraph">&nbsp;&nbsp;&nbsp;Email:</p>
+      <div className="usernameInputDiv">
+        <p className="pageParagraph">Username:</p>
         <input type="text" 
-        className="nameInput" 
-        placeholder="name" 
+        className="usernameInput" 
+        placeholder="Please create a username" 
         id="name" 
         value={name} 
         onChange={onChange}/>
@@ -43,7 +43,7 @@ function SignUp() {
         <p className="pageParagraph">&nbsp;&nbsp;&nbsp;Email:</p>
         <input type="email" 
         className="emailInput" 
-        placeholder="example@example.com" 
+        placeholder="Please enter email" 
         id="email" 
         value={email} 
         onChange={onChange}/>
@@ -53,13 +53,13 @@ function SignUp() {
         <p className="pageParagraph">Password:</p>
         <input type={showPassword ? 'text' : 'password'} 
         className="passwordInput" 
-        placeholder="Password" 
+        placeholder="Please enter password" 
         id="password" 
         value={password} 
         onChange={onChange}/>
         <img src={visibilityIcon} 
         alt="show password" 
-        className="showPassword" 
+        className="showPasswordIcon" 
         onClick={() => setShowpassword((prevState) => !prevState)}/>
         </div>
 
@@ -69,8 +69,8 @@ function SignUp() {
         </Link>
         </div>
         
-        <div className="signInTextDiv">
-        <Link to="/sign-in" className="signInLink">
+        <div className="logInTextDiv">
+        <Link to="/sign-in" className="logInLink">
         ALREADY HAVE AN ACCOUNT? SIGN IN HERE! 
         </Link>
         </div>
