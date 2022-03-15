@@ -1,5 +1,7 @@
 import {useState} from 'react'
+import {toast} from 'react-toastify'
 import {Link, useNavigate} from 'react-router-dom'
+import {getAuth, signInWithEmailAndPassword} from 'firebase/auth'
 import visibilityIcon from '../assets/svg/visibilityIcon.svg'
 
 function SignIn() {
@@ -20,6 +22,27 @@ function SignIn() {
     }))
   }
 
+  const onSubmit = async (e) => {
+    e.preventDefault()
+
+    try {
+      const auth = getAuth()
+
+      const userCredential = await signInWithEmailAndPassword
+      (
+        auth, 
+        email, 
+        password
+      )
+
+      if(userCredential.user) {
+        navigate('/')
+      }
+    } catch (error) {
+      toast.error('Something went wrong. Please check your credentials and try again.')
+    }
+  }
+
   return (
     <>
     <div className="pageContainer">
@@ -27,7 +50,7 @@ function SignIn() {
       <p className="pageHeader">LOG IN</p>
     </header>
     <main className="mainDivPageContent">
-      <form>
+      <form onSubmit={onSubmit}>
         <div className="emailInputDiv">
         <p className="pageParagraph">&nbsp;&nbsp;&nbsp;Email:</p>
         <input type="email" 

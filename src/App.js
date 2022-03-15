@@ -1,4 +1,4 @@
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
 import { ToastContainer } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css'
 import Navbar from './components/Navbar'
@@ -7,7 +7,7 @@ import SiteHeaderLogo from './components/SiteHeaderLogo'
 import About from './pages/About'
 import ForgotPassword from './pages/ForgotPassword'
 import Home from './pages/Home'
-import NotFound from './pages/NotFound';
+import NotFound from './pages/NotFound'
 import Profile from './pages/Profile'
 import SignIn from './pages/SignIn'
 import SignUp from './pages/SignUp'
@@ -21,8 +21,9 @@ function App() {
         <Routes>
           <Route path='/' element={<Home />} />
           <Route path='/*' element={<NotFound />}/>
-          {/* Private Route to Profile Page when Authenticated */}
-          <Route path='/profile' element={<Profile />} />
+          <Route path='/profile' element={<PrivateRoute />}>
+            <Route path='/profile' element={<Profile />} />
+          </Route>
           <Route path='/about' element={<About />} />
           <Route path='/sign-in' element={<SignIn />} />
           <Route path='/sign-up' element={<SignUp />} />
@@ -32,7 +33,9 @@ function App() {
         <Navbar />
       </Router>
 
-      <ToastContainer />
+      <ToastContainer 
+      autoClose={3000} 
+      theme="colored"/>
     </>
   );
 }
