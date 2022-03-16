@@ -3,8 +3,10 @@ import { ToastContainer } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css'
 import Navbar from './components/Navbar'
 import PrivateRoute from './components/PrivateRoute'
+import PrivateRouteChangePassword from './components/PrivateRouteChangePassword'
 import SiteHeaderLogo from './components/SiteHeaderLogo'
 import About from './pages/About'
+import ChangePassword from './pages/ChangePassword'
 import ForgotPassword from './pages/ForgotPassword'
 import Home from './pages/Home'
 import NotFound from './pages/NotFound'
@@ -23,6 +25,9 @@ function App() {
           <Route path='/*' element={<NotFound />}/>
           <Route path='/profile' element={<PrivateRoute />}>
             <Route path='/profile' element={<Profile />} />
+          </Route>
+          <Route path='/change-password' element={<PrivateRouteChangePassword />}>
+            <Route path='/change-password' element={<ChangePassword />} />
           </Route>
           <Route path='/about' element={<About />} />
           <Route path='/sign-in' element={<SignIn />} />

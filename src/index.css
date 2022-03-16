@@ -1,3 +1,14 @@
+/* Variables */
+:root {
+  --background-color: #FFFFFF;
+  --button-text-color: #F0F0F2;
+  --navbar-background-color: #D9D7C5;
+  --navbar-text-color: #7c797b;
+  --primary-highlight-color: #73241D;
+  --secondary-highlight-color: #BF3C30;
+  --text-color-primary: #231F20;
+}
+
 /* Typefaces */
 @font-face {
   font-family: 'JetBrainsMono-Light';
@@ -21,7 +32,7 @@
 
 /* Body */
 body {
-  color: #231F20;
+  color: var(--text-color-primary);
   font-family: 'JetBrainsMono-Light';
   margin: 0;
 }
@@ -50,7 +61,7 @@ body {
 /* Navbar */
 .navbarContainer {
   align-items: center;
-  background-color: #D9D7C5;
+  background-color: var(--navbar-background-color);
   bottom: 0;
   display: flex;
   height: 95px;
@@ -86,26 +97,26 @@ body {
 
 .navbarListItemName {
   margin-top: 0.25rem;
-  color: #7c797b;
+  color: var(--navbar-text-color);
 }
 
 .navbarListItemNameActive {
   margin-top: 0.25rem;
-  color: #231F20;
+  color: var(--text-color-primary);
 }
 
-/* Page Containers - need to tidy into correct sections */
-.pageContainer,
-.profile,
+/* Page Containers & "Main" Div */
+.explore,
 .listingDetails,
-.explore {
+.pageContainer,
+.profileContainer {
   margin: 1rem;
 }
 @media (min-width: 1024px) {
-  .pageContainer,
-  .profile,
+  .explore,
   .listingDetails,
-  .explore {
+  .pageContainer,
+  .profileContainer {
     margin: 3rem;
   }
 }
@@ -116,64 +127,10 @@ body {
   text-align: center;
 }
 
-/* Profile container - tidy up! */
-.profileHeader {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-
-.profileDetailsHeader {
-  display: flex;
-  justify-content: space-between;
-  max-width: 500px;
-}
-
-.profileDetailsText {
-  font-weight: 600;
-}
-
-.profileCard {
-  background-color: #ffffff;
-  border-radius: 1rem;
-  padding: 1rem;
-  box-shadow: rgba(0, 0, 0, 0.2);
-  max-width: 500px;
-}
-
-.profileName,
-.profileEmail,
-.profileAddress,
-.profileAddressActive,
-.profileEmailActive,
-.profileNameActive {
-  all: unset;
-  margin: 0.3rem 0;
-  font-weight: 600;
-  width: 100%;
-}
-.profileNameActive {
-  background-color: rgba(44, 44, 44, 0.1);
-}
-
-.profileEmail,
-.profileAddress,
-.profileAddressActive,
-.profileEmailActive {
-  font-weight: 500;
-}
-.profileEmailActive {
-  background-color: rgba(44, 44, 44, 0.1);
-}
-
-.profileAddressActive {
-  background-color: rgba(44, 44, 44, 0.1);
-}
-
-.changePersonalDetails {
-  cursor: pointer;
-  font-weight: 600;
-  color: #00cc66;
+.pageParagraph {
+  display: inline-flex;
+  font-size: 14px;
+  margin-bottom: 3rem;
 }
 
 .mainDivPageContent {
@@ -182,31 +139,58 @@ body {
   width: 100%;
 }
 
-.pageParagraph {
-  display: inline-flex;
-  font-size: 14px;
-  margin-bottom: 3rem;
+/* Profile */
+.profileDetailsHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
 }
 
-.logOut {
-  cursor: pointer;
-  font-family: 'Montserrat', sans-serif;
-  font-size: 1rem;
+.profileDetailsText {
   font-weight: 600;
-  color: #ffffff;
-  background-color: #00cc66;
-  padding: 0.25rem 0.75rem;
+}
+
+.profileCard {
+  align-items: center;
   border-radius: 1rem;
+  box-shadow: rgba(0, 0, 0, 0.2);
+  display: inline-flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+}
+
+.logOutBar {
+  align-items: center;
+  display: flex;
+  justify-content: center;
+  position: relative;
+}
+
+.logOutButton {
+  align-items: center;
+  background-color: var(--primary-highlight-color);
+  border: none;
+  border-radius: 20px;
+  color: var(--button-text-color);
+  cursor: pointer;
+  display: flex;
+  font-size: 20px;
+  font-family: 'JetBrainsMono-Light';
+  justify-content: center;
+  margin-bottom: -1rem;
+  padding: 0.5rem;
+  width: 10rem;
 }
 
 /* Input Divs */
+.emailInput,
 .input,
 .passwordInput,
-.emailInput,
-.usernameInput,
-.textarea {
-  background: #ffffff;
-  border: 1.6px #231F20;
+.textarea,
+.usernameInput {
+  background: var(--background-color);
+  border: 1.6px var(--text-color-primary);
   border-style: hidden hidden solid hidden;
   font-family: 'JetBrainsMono-Light';
   font-size: 14px;
@@ -221,30 +205,90 @@ body {
 
 .showPasswordIcon {
   cursor: pointer;
-  padding: 1rem;
   margin-left: -2.5rem;
   margin-top: -0.2rem;
+  padding: 1rem;
   position: absolute;
 }
 
+.oAuthCallToAction {
+  padding-top: 3rem;
+}
+
+.googleLogin {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+}
+
+.googleIconDiv {
+  align-items: center;
+  background-color: var(--background-color);
+  border: none;
+  border-radius: 50%;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.1);
+  cursor: pointer;
+  display: flex;
+  height: 4rem;
+  justify-content: center;
+  margin: 1.5rem;
+  padding: 0.75rem;
+  width: 4rem;
+}
+
+.googleIconImg {
+  width: 100%;
+}
+
 /* Log In/Sign Up/Forgot Password Links */
+.changePasswordLink,
 .forgotPasswordLink, 
-.signUpLink, 
-.logInLink {
-  color: #231F20;
+.logInLink,
+.signUpLink {
+  color: var(--text-color-primary);
   cursor: pointer;
   font-size: 12px;
 }
 
+.changePasswordTextDiv,
 .forgotPasswordTextDiv, 
 .signUpTextDiv {
   margin-bottom: 1.5rem;
 }
 
+.changePasswordTextDiv,
+.changePasswordLink {
+  margin-top: 3.5rem;
+  font-size: 16px;
+}
+
+.passwordResetLink {
+  color: var(--text-color-primary);
+  cursor: pointer;
+  font-size: 16px;
+  margin-top: 3.5rem;
+  text-decoration: underline;
+}
+
+.resetLinkButton {
+  background: none;
+  border: none;
+  color: inherit;
+  cursor: pointer;
+  font: inherit;
+  outline: inherit;
+  padding: 0;
+  text-decoration: inherit;
+}
+
+.backToSignUpLink {
+  text-decoration: none;
+}
+
 /* Buttons */
+.homepageBar,
 .logInBar,
-.signUpBar,
-.homepageBar {
+.signUpBar {
   align-items: center;
   bottom: 0;
   display: flex;
@@ -255,17 +299,17 @@ body {
   right: 0;
 }
 
+.homepageButton,
+.logInText,
 .logInButton,
 .signUpButton,
-.homepageButton
-.logInText,
 .signUpText {
   cursor: pointer;
 }
 @media (min-width: 1024px) {
+  .homepageBar,
   .logInBar,
-  .signUpBar,
-  .homepageBar {
+  .signUpBar {
     justify-content: center;
   }
 }
@@ -276,14 +320,14 @@ body {
   font-weight: 700;
 }
 
+.homepageButton,
 .logInButton,
-.signUpButton,
-.homepageButton {
+.signUpButton {
   align-items: center;
-  background-color: #73241D;
+  background-color: var(--primary-highlight-color);
   border: none;
   border-radius: 20px;
-  color: #F0F0F2;
+  color: var(--button-text-color);
   display: flex;
   font-size: 20px;
   font-family: 'JetBrainsMono-Light';
@@ -292,16 +336,8 @@ body {
   width: 10rem;
 }
 
-@media (min-width: 1024px) {
-  .logInButton,
-  .signUpButton,
-  .homepageButton {
-    margin-left: 3rem;
-  }
-}
-
 .homepageLink {
-  color: #F0F0F2;
+  color: var(--button-text-color);
   cursor: pointer;
   text-decoration: none;
 }
@@ -323,12 +359,11 @@ body {
 .loadingSpinner {
   animation: spin 1.4s linear infinite;
   border: 8px solid;
-  border-color: #73241D transparent #73241D transparent;
+  border-color: var(--primary-highlight-color) transparent var(--primary-highlight-color) transparent;
   border-radius: 50%;
   height: 64px;
   width: 64px;
 }
-
 @keyframes spin {
   0% {
     transform: rotate(0deg);

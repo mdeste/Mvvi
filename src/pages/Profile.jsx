@@ -1,14 +1,10 @@
-import {getAuth, updateProfile} from 'firebase/auth'
-import {updateDoc, doc} from 'firebase/firestore'
-import {db} from '../firebase.config'
-import {useState, useEffect} from 'react'
+import {getAuth} from 'firebase/auth'
+import {useState} from 'react'
 import {useNavigate, Link} from 'react-router-dom'
 import {toast} from 'react-toastify'
 
-
 function Profile() {
   const auth = getAuth()
-  const [changeDetails, setChangeDetails] = useState(false)
   const [formData, setFormData] = useState({
     name: auth.currentUser.displayName,
     email: auth.currentUser.email
@@ -20,70 +16,43 @@ function Profile() {
 
   const onLogout = () => {
     auth.signOut()
+    toast.success('Logout successful. Redirected to homepage!', {
+      autoClose: 1000,
+      closeOnClick: false,
+      pauseOnHover: false,
+      draggable: false,
+      progress: undefined,
+      })
     navigate('/')
   }
 
-  const onSubmit = async () => {
-    try {
-      if(auth.currentUser.displayName !== name) {
-        // Update displayname in FB
-        await updateProfile(auth.currentUser, {
-          displayName: name
-        })
-
-        // Update in FS
-        const userRef = doc(db, 'users', auth.currentUser.uid)
-        await updateDoc(userRef, {
-          name
-        })
-      }
-    } catch (error) {
-      toast.error('Something went wrong and we could not update your profile details.')
-    }
-  }
-
-  const onChange = (e) => {
-    setFormData((prevState) => ({
-      ...prevState,
-      [e.target.id]: e.target.value
-    }))
-  }
-
   return (
-    <div className="profile">
-      <header className="profileHeader">
-        <p className="pageHeader">My Profile</p>
-        <button type="button" className="logOut" onClick={onLogout}>Log Out</button>
+    <div className="profileContainer">
+      <header>       
+          <p className="pageHeader">MY PROFILE</p>        
       </header>
-      <main>
+      <div className="logOutBar">
+        <button type="button" className="logOutButton" onClick={onLogout}>LOG OUT</button>
+      </div>
+      <main className="mainDivPageContent">
         <div className="profileDetailsHeader">
           <p className="profileDetailsText">
             Profile Details
           </p>
-          <p className="changePersonalDetails" onClick={() => {
-            changeDetails && onSubmit()
-            setChangeDetails((prevState) => !prevState)
-          }}>
-            {changeDetails ? 'done' : 'change'}
-          </p>
         </div>
         <div className="profileCard">
-          <form>
-            <input 
-            type="text" 
-            id="name" 
-            className={!changeDetails ? 'profileName' : 'profileNameActive'}
-            disabled={!changeDetails}
-            value={name}
-            onChange={onChange}/>
-            <input 
-            type="text" 
-            id="email" 
-            className={!changeDetails ? 'profileEmail' : 'profileEmailActive'}
-            disabled={!changeDetails}
-            value={email}
-            onChange={onChange}/>
-          </form>
+            <p className="profileParagraph">Username: {name}</p>
+            <p className="profileParagraph">Email:&nbsp; {email}</p>
+            <div className="changePasswordTextDiv">
+              <Link to="/change-password" className="changePasswordLink">
+              CHANGE PASSWORD
+              </Link>
+            </div>
+            <div className="homepageBar">
+            <Link to="/" className="homepageLink">
+              <button className="homepageButton">HOMEPAGE</button>
+            </Link>
+            </div>
         </div>
       </main>
     </div>

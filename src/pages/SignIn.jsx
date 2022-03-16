@@ -2,6 +2,7 @@ import {useState} from 'react'
 import {toast} from 'react-toastify'
 import {Link, useNavigate} from 'react-router-dom'
 import {getAuth, signInWithEmailAndPassword} from 'firebase/auth'
+import OAuth from '../components/OAuth'
 import visibilityIcon from '../assets/svg/visibilityIcon.svg'
 
 function SignIn() {
@@ -36,6 +37,13 @@ function SignIn() {
       )
 
       if(userCredential.user) {
+        toast.success('Login successful. Redirecting to homepage!', {
+          autoClose: 1000,
+          closeOnClick: false,
+          pauseOnHover: false,
+          draggable: false,
+          progress: undefined,
+          })
         navigate('/')
       }
     } catch (error) {
@@ -87,12 +95,14 @@ function SignIn() {
         </Link>
         </div>
 
+        
+
         <div className="logInBar">
         <button className="logInButton">LOG IN</button>
         </div>
       </form>
-
-      {/* Google OAuth */}
+      <p className="oAuthCallToAction">OR SIGN IN WITH GOOGLE</p>
+        <OAuth />
     </main>
     </div>
     </>

@@ -4,6 +4,7 @@ import {getAuth, createUserWithEmailAndPassword, updateProfile} from 'firebase/a
 import {db} from '../firebase.config'
 import {setDoc, doc, serverTimestamp} from 'firebase/firestore'
 import { toast } from 'react-toastify'
+import OAuth from '../components/OAuth'
 import visibilityIcon from '../assets/svg/visibilityIcon.svg'
 
 function SignUp() {
@@ -50,9 +51,17 @@ function SignUp() {
 
       await setDoc(doc(db, 'users', user.uid), formDataCopy)
 
+      toast.success('Signup successful. Redirected to homepage!', {
+        autoClose: 1000,
+        closeOnClick: false,
+        pauseOnHover: false,
+        draggable: false,
+        progress: undefined,
+        })
       navigate('/')
     } catch (error) {
       toast.error('Something went wrong. Please check your credentials and try again.')
+      console.log(error)
     }
   }
 
@@ -110,12 +119,14 @@ function SignUp() {
         </Link>
         </div>
 
+        
+
         <div className="signUpBar">
         <button className="signUpButton">SIGN UP</button>
         </div>
-
-      {/* Google OAuth */}
       </form>
+      <p className="oAuthCallToAction">OR SIGN UP WITH GOOGLE</p>
+        <OAuth />
     </main>
     </div>
     </>
