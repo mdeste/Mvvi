@@ -37,7 +37,7 @@ function SignIn() {
       )
 
       if(userCredential.user) {
-        toast.success('Login successful. Redirecting to homepage!', {
+        toast.success('Login successful. Redirected to homepage!', {
           autoClose: 1000,
           closeOnClick: false,
           pauseOnHover: false,
