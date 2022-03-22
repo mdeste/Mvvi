@@ -44,7 +44,6 @@ body {
   height: 50px;
   justify-content: center;
   left: 0;
-  position: sticky;
   right: 0;
   top: 0;
   z-index: 1000;
@@ -395,6 +394,94 @@ body {
   margin-top: 3rem;
   padding: 0.5rem;
   width: 15rem;
+}
+
+/* Explore Page */
+.mainDivExploreContent {
+  width: 100%;
+}
+@media (min-width: 1024px) {
+  .mainDivExploreContent {
+    margin: 0 auto;
+    width: 50%;
+  }
+}
+
+/* Search Result */
+.searchResultsContainer { 
+  margin-bottom: 10rem;
+  margin-top: 10rem;
+}
+
+.mainResult {
+  margin-bottom: 3rem;
+}
+
+.searchResultContainer {
+  background-color: var(--primary-highlight-color);
+  border-radius: 16px;
+  display: grid;
+  grid-template-areas:
+    "poster title title title"
+    ". date date date"
+    ". rating rating hearticon";
+  grid-template-columns: [first] 1fr [second] 1fr [third] 1fr [fourth] 1fr [end];
+  grid-template-rows: [row1-start] 62.5px [row2-start] 25px [row3-start] 62.5px [end];
+  justify-content: stretch;
+  margin-bottom: -1rem;
+  padding-bottom: 2em;
+  padding-left: 1em;
+  padding-right: 1em;
+  padding-top: 2em;
+}
+
+.searchResultPosterContainer {
+  margin-bottom: 0;
+}
+
+.searchResultPoster {
+  align-self: center;
+  height: 150px;
+  margin-right: 1em;  
+  width: 100px;
+}
+
+.searchResultTitleLink {
+  align-self: start;
+  grid-area: title;
+  text-transform: uppercase;
+}
+
+.searchResultLink {
+  color: var(--button-text-color)
+}
+
+.heartIcon {
+  align-self: end;
+  grid-area: hearticon;
+  height: 1.5em;
+  justify-self: end;
+  margin-left: 3em;
+  margin-bottom: 0;
+  padding-left: 1em;
+}
+
+.heartIcon:hover {
+  cursor: pointer;
+}
+
+.searchResultReleaseDate {
+  align-self: start;
+  color: var(--button-text-color);
+  grid-area: date;
+  margin-bottom: 0;
+}
+
+.searchResultVoteAverage {
+  align-self: end;
+  color: var(--button-text-color);
+  grid-area: rating;
+  margin-bottom: 0;
 }
 
 /* Loading Spinner */

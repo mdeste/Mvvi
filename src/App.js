@@ -9,6 +9,7 @@ import About from './pages/About'
 import ChangePassword from './pages/ChangePassword'
 import ForgotPassword from './pages/ForgotPassword'
 import Home from './pages/Home'
+import Movie from './pages/Movie'
 import NotFound from './pages/NotFound'
 import Profile from './pages/Profile'
 import SignIn from './pages/SignIn'
@@ -22,6 +23,7 @@ function App() {
       <SiteHeaderLogo />
         <Routes>
           <Route path='/' element={<Home />} />
+          <Route path='/movie/:original_title' element={<Movie />} />
           <Route path='/*' element={<NotFound />}/>
           <Route path='/profile' element={<PrivateRoute />}>
             <Route path='/profile' element={<Profile />} />

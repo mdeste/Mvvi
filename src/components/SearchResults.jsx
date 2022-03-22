@@ -1,4 +1,6 @@
 import {useEffect, useState} from 'react'
+import Spinner from '../components/Spinner'
+import SearchResult from './results/SearchResult'
 
 function SearchResults() {
     const [results, setResults] = useState([])
@@ -17,14 +19,18 @@ function SearchResults() {
         setLoading(false)
     }
 
-  return (
-    <div>
-        {results.map((results) => (
-            <ul key={results.id}>
-            <li>{results.original_title}</li>
-            </ul>
-        ))}
-    </div>
-  )
+    if(!loading) {
+        return (
+            <div className="searchResultsContainer">
+                {results.map((results) => (
+                    <SearchResult key={results.id} results={results}/>
+                ))}
+            </div>
+          )
+    } else {
+        return (
+            <Spinner />
+        )
+    }
 }
 export default SearchResults

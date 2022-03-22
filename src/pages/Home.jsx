@@ -8,7 +8,7 @@ function Home() {
         <p className="pageHeader">EXPLORE</p>
       </header>
 
-      <main className="mainDivAboutContent">
+      <main className="mainDivExploreContent">
         <SearchResults />
       </main>
     </div>
