@@ -1,23 +1,14 @@
-import {useEffect, useState} from 'react'
+import {useEffect, useContext} from 'react'
 import Spinner from '../components/Spinner'
 import SearchResult from './results/SearchResult'
+import TmdbContext from '../context/tmdb/TmdbContext'
 
 function SearchResults() {
-    const [results, setResults] = useState([])
-    const [loading, setLoading] = useState(true)
-    
+    const {results, loading, fetchResults} = useContext(TmdbContext)
+   
     useEffect(() => {
         fetchResults()
     }, [])
-
-    const fetchResults = async () => {
-        const response = await fetch(`${process.env.REACT_APP_TMDB_URL}=${process.env.REACT_APP_TMDB_TOKEN}`)
-
-        const data = await response.json()
-
-        setResults(data.results)
-        setLoading(false)
-    }
 
     if(!loading) {
         return (

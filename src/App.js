@@ -15,9 +15,11 @@ import Profile from './pages/Profile'
 import SignIn from './pages/SignIn'
 import SignUp from './pages/SignUp'
 import UserList from './pages/UserList'
+import {TmdbProvider} from './context/tmdb/TmdbContext'
 
 function App() {
   return (
+    <TmdbProvider>
     <>
       <Router>
       <SiteHeaderLogo />
@@ -44,6 +46,7 @@ function App() {
       autoClose={3000} 
       theme="colored"/>
     </>
+    </TmdbProvider>
   );
 }
 
