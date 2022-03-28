@@ -1,14 +1,10 @@
-import {useEffect, useContext} from 'react'
+import {useContext} from 'react'
 import Spinner from '../components/Spinner'
 import SearchResult from './results/SearchResult'
 import TmdbContext from '../context/tmdb/TmdbContext'
 
 function SearchResults() {
-    const {results, loading, fetchResults} = useContext(TmdbContext)
-   
-    useEffect(() => {
-        fetchResults()
-    }, [])
+    const {results, loading} = useContext(TmdbContext)
 
     if(!loading) {
         return (

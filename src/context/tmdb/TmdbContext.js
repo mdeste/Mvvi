@@ -9,12 +9,15 @@ const TMDB_TOKEN = process.env.REACT_APP_TMDB_TOKEN
 export const TmdbProvider = ({children}) => {
     const initialState = {
         results: [],
-        loading: true
+        loading: false
     }
 
     const [state, dispatch] = useReducer(TmdbReducer, initialState)
 
+    // Get initial results (testing purposes)
     const fetchResults = async () => {
+        setLoading()
+
         const response = await fetch(`${TMDB_URL}=${TMDB_TOKEN}`)
 
         const data = await response.json()
@@ -24,6 +27,11 @@ export const TmdbProvider = ({children}) => {
             payload: data.results,
         })
     } 
+
+    // Set Loading
+    const setLoading = () => dispatch({
+        type: "SET_LOADING"
+    })
 
     return <TmdbContext.Provider value={{
         results: state.results, 
