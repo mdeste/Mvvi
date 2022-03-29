@@ -183,7 +183,41 @@ body {
 }
 
 /* Search Filter Dropdowns */
+.dropdownContainer {
+  align-items: center;  
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  margin-bottom: 2rem;
+}
 
+.searchFilterDropdown {
+  appearance: none;
+  background-image: url('./assets/svg/dropdownArrowReplacement.svg');
+  background-position: right 0em top 50%;
+  background-repeat: no-repeat, repeat;
+  background-size: 1.4em;
+  border: transparent;
+  color: var(--text-color-primary);
+  font-size: 20px;
+  font-family: 'JetBrainsMono-Light';
+  height: 2.5em;
+  margin: 0;
+}
+.searchFilterDropdown::-ms-expand {
+  display: none;
+}
+.searchFilterDropdown:hover {
+  cursor: pointer;
+}
+.searchFilterDropdown:focus {
+  border-color: transparent;
+  outline: none;
+}
+.searchFilterDropdown option {
+  background-color: var(--text-color-primary);
+  color: var(--button-text-color);
+}
 
 /* About */
 .mainDivAboutContent {
