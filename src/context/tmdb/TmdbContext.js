@@ -5,6 +5,7 @@ const TmdbContext = createContext()
 
 const TMDB_URL = process.env.REACT_APP_TMDB_URL
 const TMDB_TOKEN = process.env.REACT_APP_TMDB_TOKEN
+const TMDB_EXCLUDE = process.env.REACT_APP_TMDB_EXCLUDE
 
 export const TmdbProvider = ({children}) => {
     const initialState = {
@@ -14,11 +15,13 @@ export const TmdbProvider = ({children}) => {
 
     const [state, dispatch] = useReducer(TmdbReducer, initialState)
 
-    // Get initial results (testing purposes)
-    const fetchResults = async () => {
+    // Get search results
+    const fetchResults = async (select) => {
         setLoading()
 
-        const response = await fetch(`${TMDB_URL}=${TMDB_TOKEN}`)
+        const paramString = select
+
+        const response = await fetch(`${TMDB_URL}=${TMDB_TOKEN}${TMDB_EXCLUDE}${paramString}`)
 
         const data = await response.json()
 

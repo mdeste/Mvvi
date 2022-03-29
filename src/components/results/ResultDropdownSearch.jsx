@@ -1,9 +1,39 @@
+import {useState, useContext} from 'react'
+import { toast } from 'react-toastify'
+import TmdbContext from '../../context/tmdb/TmdbContext'
+
 function ResultDropdownSearch() {
+	const [select, setSelect] = useState('')
+
+	const { results, fetchResults } = useContext(TmdbContext)
+	
+	const handleChange = (e) => setSelect( 
+			document.getElementById('releaseYearSelect').value + 
+			document.getElementById('userRatingSelect').value +
+			document.getElementById('genreSelect').value
+		)
+
+	const handleSubmit = (e) => {
+		e.preventDefault()
+
+		if(
+				document.getElementById('releaseYearSelect').value + 
+				document.getElementById('userRatingSelect').value + 
+				document.getElementById('genreSelect').value === 
+				''
+			) {
+				toast.error('Please select a search parameter from the dropdown list')
+		} else {
+			fetchResults(select)
+		}
+	}
+
   return (
 	<>
+	<form onSubmit={handleSubmit}>
 		<div className="dropdownContainer">
-			<select name="genre" id="genreSelect" className="searchFilterDropdown">
-				<option value="defaultGenre">GENRE&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</option>
+			<select name="genre" id="genreSelect" className="searchFilterDropdown" onChange={handleChange} >
+				<option value="">GENRE&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</option>
 				<option value="&with_genres=28">ACTION</option>
 				<option value="&with_genres=12">ADVENTURE</option>
 				<option value="&with_genres=16">ANIMATION</option>
@@ -24,8 +54,8 @@ function ResultDropdownSearch() {
 				<option value="&with_genres=10752">WAR</option>
 				<option value="&with_genres=37">WESTERN</option>
 			</select>
-			<select name="releaseYear" id="releaseYearSelect" className="searchFilterDropdown">
-				<option value="default-decade">RELEASE DECADE&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</option>
+			<select name="releaseYear" id="releaseYearSelect" className="searchFilterDropdown" onChange={handleChange}>
+				<option value="">RELEASE DECADE&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</option>
 				<option value="&primary_release_date.gte=2020-01-01&primary_release_date.lte=2022-12-31&">2020 – 2022</option>
 				<option value="&primary_release_date.gte=2010-01-01&primary_release_date.lte=2019-12-31&">2010 – 2019</option>
 				<option value="&primary_release_date.gte=2000-01-01&primary_release_date.lte=2009-12-31&">2000 – 2009</option>
@@ -40,8 +70,8 @@ function ResultDropdownSearch() {
 				<option value="&primary_release_date.gte=1910-01-01&primary_release_date.lte=1919-12-31&">1910 – 1919</option>
 				<option value="&primary_release_date.gte=1900-01-01&primary_release_date.lte=1909-12-31&">1900 – 1909</option>
 			</select>
-			<select name="userRating" id="userRatingSelect" className="searchFilterDropdown">
-				<option value="default-rating">USER RATING&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</option>
+			<select name="userRating" id="userRatingSelect" className="searchFilterDropdown" onChange={handleChange}>
+				<option value="">USER RATING&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</option>
 				<option value="&vote_average.gte=9&">90% OR HIGHER</option>
 				<option value="&vote_average.gte=8&">80% OR HIGHER</option>
 				<option value="&vote_average.gte=7&">70% OR HIGHER</option>
@@ -55,8 +85,9 @@ function ResultDropdownSearch() {
 			</select>
 		</div>
 		<div className="searchBar">
-			<button className="searchButton">SEARCH!</button>
+			<button type="submit" className="searchButton">SEARCH!</button>
 		</div>
+	</form>
 	</>
   )
 }
