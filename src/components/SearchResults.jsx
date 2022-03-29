@@ -9,9 +9,14 @@ function SearchResults() {
     if(!loading) {
         return (
             <div className="searchResultsContainer">
-                {results.map((results) => (
+                {results.length ? 
+                (results.map((results) => (
                     <SearchResult key={results.id} results={results}/>
-                ))}
+                ))) 
+                : (
+                <div className="noResultsTextContainer">
+                    <p classname="noResultsText">No results. Please try different parameters!</p>
+                </div>)}
             </div>
           )
     } else {

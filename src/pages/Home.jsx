@@ -1,4 +1,3 @@
-import Spinner from '../components/Spinner'
 import SearchResults from '../components/SearchResults'
 import ResultDropdownSearch from '../components/results/ResultDropdownSearch'
 

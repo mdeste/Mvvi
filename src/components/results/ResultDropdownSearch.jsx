@@ -72,7 +72,6 @@ function ResultDropdownSearch() {
 			</select>
 			<select name="userRating" id="userRatingSelect" className="searchFilterDropdown" onChange={handleChange}>
 				<option value="">USER RATING&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</option>
-				<option value="&vote_average.gte=9&">90% OR HIGHER</option>
 				<option value="&vote_average.gte=8&">80% OR HIGHER</option>
 				<option value="&vote_average.gte=7&">70% OR HIGHER</option>
 				<option value="&vote_average.gte=6&">60% OR HIGHER</option>

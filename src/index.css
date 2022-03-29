@@ -533,6 +533,12 @@ body {
   margin-bottom: 0;
 }
 
+.noResultsTextContainer {
+  align-items: center;
+  display: flex;
+  justify-content: center;
+}
+
 /* Loading Spinner */
 .loadingSpinnerContainer {
   align-items: center;
