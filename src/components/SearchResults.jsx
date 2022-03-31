@@ -15,7 +15,7 @@ function SearchResults() {
                 ))) 
                 : (
                 <div className="noResultsTextContainer">
-                    <p classname="noResultsText">No results. Please try different parameters!</p>
+                    <p className="noResultsText">No results. Please try different parameters!</p>
                 </div>)}
             </div>
           )

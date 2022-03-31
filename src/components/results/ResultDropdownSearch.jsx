@@ -5,7 +5,7 @@ import TmdbContext from '../../context/tmdb/TmdbContext'
 function ResultDropdownSearch() {
 	const [select, setSelect] = useState('')
 
-	const { results, fetchResults } = useContext(TmdbContext)
+	const { fetchResults } = useContext(TmdbContext)
 	
 	const handleChange = (e) => setSelect( 
 			document.getElementById('releaseYearSelect').value + 
@@ -32,7 +32,7 @@ function ResultDropdownSearch() {
 	<>
 	<form onSubmit={handleSubmit}>
 		<div className="dropdownContainer">
-			<select name="genre" id="genreSelect" className="searchFilterDropdown" onChange={handleChange} >
+			<select name="genre" id="genreSelect" className="searchFilterDropdown" onChange={handleChange}>
 				<option value="">GENRE&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</option>
 				<option value="&with_genres=28">ACTION</option>
 				<option value="&with_genres=12">ADVENTURE</option>
