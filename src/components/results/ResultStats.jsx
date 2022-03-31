@@ -1,5 +1,5 @@
 import {useContext} from 'react'
-import TmdbContext from '../context/tmdb/TmdbContext'
+import TmdbContext from '../../context/tmdb/TmdbContext'
 
 function ResultStats() {
     const {results} = useContext(TmdbContext)

@@ -1,6 +1,7 @@
 import SearchResults from '../components/SearchResults'
 import ResultDropdownSearch from '../components/results/ResultDropdownSearch'
-import ResultStats from '../components/ResultStats'
+import ResultStats from '../components/results/ResultStats'
+import ResultsOrder from '../components/results/ResultsOrder'
 
 function Home() {
   return (
@@ -8,13 +9,16 @@ function Home() {
       <header>
         <p className="pageHeader">EXPLORE</p>
       </header>
-
+      
       <ResultDropdownSearch />
 
-      
+      <div className="resultsOrderAndLength">
+        <ResultsOrder />
+        <ResultStats />
+      </div>
 
       <main className="mainDivExploreContent">
-      <ResultStats />
+      
         <SearchResults />
       </main>
     </div>
