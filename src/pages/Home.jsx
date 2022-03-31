@@ -1,5 +1,6 @@
 import SearchResults from '../components/SearchResults'
 import ResultDropdownSearch from '../components/results/ResultDropdownSearch'
+import ResultStats from '../components/ResultStats'
 
 function Home() {
   return (
@@ -10,7 +11,10 @@ function Home() {
 
       <ResultDropdownSearch />
 
+      
+
       <main className="mainDivExploreContent">
+      <ResultStats />
         <SearchResults />
       </main>
     </div>

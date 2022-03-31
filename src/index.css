@@ -539,6 +539,16 @@ body {
   justify-content: center;
 }
 
+/* Result Stats */
+.resultStats {
+  float: right;
+  margin-top: -5rem;
+}
+
+.resultStatsText {
+  font-size: 20px;
+}
+
 /* Loading Spinner */
 .loadingSpinnerContainer {
   align-items: center;
