@@ -4,7 +4,7 @@ import SearchResult from './results/SearchResult'
 import TmdbContext from '../context/tmdb/TmdbContext'
 
 function SearchResults() {
-    const {results, loading} = useContext(TmdbContext)
+    const {results, loading } = useContext(TmdbContext)
 
     if(!loading) {
         return (
@@ -17,6 +17,11 @@ function SearchResults() {
                 <div className="noResultsTextContainer">
                     <p className="noResultsText">No results. Please try different parameters!</p>
                 </div>)}
+                {results.total_pages > 1 && (
+                    <h1>
+                    hello
+                    </h1>
+                )}
             </div>
           )
     } else {

@@ -6,6 +6,12 @@ const TmdbReducer = (state, action) => {
                 results: action.payload,
                 loading: false,
             }
+        case "REORDER_RESULTS": 
+            return {
+                ...state,
+                results: action.payload,
+                loading: false,
+            }
         case "SET_LOADING": 
             return {
                 ...state,

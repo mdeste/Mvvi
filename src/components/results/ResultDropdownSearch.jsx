@@ -5,7 +5,7 @@ import TmdbContext from '../../context/tmdb/TmdbContext'
 function ResultDropdownSearch() {
 	const [select, setSelect] = useState('')
 
-	const { fetchResults } = useContext(TmdbContext)
+	const {fetchResults} = useContext(TmdbContext)
 	
 	const handleChange = (e) => setSelect( 
 			document.getElementById('releaseYearSelect').value + 
@@ -25,6 +25,8 @@ function ResultDropdownSearch() {
 				toast.error('Please select a search parameter from the dropdown list!')
 		} else {
 			fetchResults(select)
+
+			document.cookie = select
 		}
 	}
 
@@ -34,25 +36,25 @@ function ResultDropdownSearch() {
 		<div className="dropdownContainer">
 			<select name="genre" id="genreSelect" className="searchFilterDropdown" onChange={handleChange}>
 				<option value="">GENRE&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</option>
-				<option value="&with_genres=28">ACTION</option>
-				<option value="&with_genres=12">ADVENTURE</option>
-				<option value="&with_genres=16">ANIMATION</option>
-				<option value="&with_genres=35">COMEDY</option>
-				<option value="&with_genres=80">CRIME</option>
-				<option value="&with_genres=99">DOCUMENTARY</option>
-				<option value="&with_genres=18">DRAMA</option>
-				<option value="&with_genres=10751">FAMILY</option>
-				<option value="&with_genres=14">FANTASY</option>
-				<option value="&with_genres=36">HISTORY</option>
-				<option value="&with_genres=27">HORROR</option>
-				<option value="&with_genres=10402">MUSIC</option>
-				<option value="&with_genres=9648">MYSTERY</option>
-				<option value="&with_genres=10749">ROMANCE</option>
-				<option value="&with_genres=878">SCI-FI</option>
-				<option value="&with_genres=10770">TV MOVIES</option>
-				<option value="&with_genres=53">THRILLER</option>
-				<option value="&with_genres=10752">WAR</option>
-				<option value="&with_genres=37">WESTERN</option>
+				<option value="&with_genres=28&">ACTION</option>
+				<option value="&with_genres=12&">ADVENTURE</option>
+				<option value="&with_genres=16&">ANIMATION</option>
+				<option value="&with_genres=35&">COMEDY</option>
+				<option value="&with_genres=80&">CRIME</option>
+				<option value="&with_genres=99&">DOCUMENTARY</option>
+				<option value="&with_genres=18&">DRAMA</option>
+				<option value="&with_genres=10751&">FAMILY</option>
+				<option value="&with_genres=14&">FANTASY</option>
+				<option value="&with_genres=36&">HISTORY</option>
+				<option value="&with_genres=27&">HORROR</option>
+				<option value="&with_genres=10402&">MUSIC</option>
+				<option value="&with_genres=9648&">MYSTERY</option>
+				<option value="&with_genres=10749&">ROMANCE</option>
+				<option value="&with_genres=878&">SCI-FI</option>
+				<option value="&with_genres=10770&">TV MOVIES</option>
+				<option value="&with_genres=53&">THRILLER</option>
+				<option value="&with_genres=10752&">WAR</option>
+				<option value="&with_genres=37&">WESTERN</option>
 			</select>
 			<select name="releaseYear" id="releaseYearSelect" className="searchFilterDropdown" onChange={handleChange}>
 				<option value="">RELEASE DECADE&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</option>

@@ -29,7 +29,23 @@ export const TmdbProvider = ({children}) => {
             type: "GET_RESULTS",
             payload: data.results,
         })
-    } 
+    }    
+    
+    const reorderResults = async (order) => {
+        setLoading()
+
+        const paramString1 = document.cookie
+        const paramString2 = order
+
+        const response = await fetch(`${TMDB_URL}=${TMDB_TOKEN}${TMDB_EXCLUDE}${paramString1}${paramString2}`)
+
+        const data = await response.json()
+
+        dispatch({
+            type: "REORDER_RESULTS",
+            payload: data.results,
+        })
+    }
 
     // Set Loading
     const setLoading = () => dispatch({
@@ -40,6 +56,7 @@ export const TmdbProvider = ({children}) => {
         results: state.results, 
         loading: state.loading,
         fetchResults,
+        reorderResults,
     }}>
         {children}
     </TmdbContext.Provider>
