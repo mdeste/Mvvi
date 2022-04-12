@@ -39,7 +39,7 @@ function ResultsOrder() {
         <option value="&sort_by=vote_average.asc">Rating Asc</option>
       </select>
       <div className="filterBar">
-			  <button type="submit" className="filterButton">FILTER RESULTS!</button>
+			  <button type="submit" className="filterButton">FILTER RESULTS</button>
 		  </div>
       </form>
     </div>

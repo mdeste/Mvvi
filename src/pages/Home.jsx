@@ -4,6 +4,7 @@ import SearchResults from '../components/SearchResults'
 import ResultDropdownSearch from '../components/results/ResultDropdownSearch'
 import ResultStats from '../components/results/ResultStats'
 import ResultsOrder from '../components/results/ResultsOrder'
+import MoreResults from '../components/results/MoreResults'
 
 function Home() {
   const {results} = useContext(TmdbContext)
@@ -24,8 +25,10 @@ function Home() {
       )}
 
       <main className="mainDivExploreContent">
-      
         <SearchResults />
+        {results.length > 0 && (
+          <MoreResults />
+        )}
       </main>
     </div>
   )
