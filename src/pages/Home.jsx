@@ -26,7 +26,7 @@ function Home() {
 
       <main className="mainDivExploreContent">
         <SearchResults />
-        {results.length > 0 && (
+        {results.length >= 20 && (
           <MoreResults />
         )}
       </main>
