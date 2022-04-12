@@ -597,6 +597,7 @@ body {
   align-items: center;
   display: flex;
   justify-content: center;
+  margin-top: 6em;
 }
 
 /* Loading Spinner */
