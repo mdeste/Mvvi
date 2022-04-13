@@ -6,6 +6,7 @@ const TmdbContext = createContext()
 const TMDB_URL = process.env.REACT_APP_TMDB_URL
 const TMDB_TOKEN = process.env.REACT_APP_TMDB_TOKEN
 const TMDB_EXCLUDE = process.env.REACT_APP_TMDB_EXCLUDE
+const TMDB_PAGENUM = process.env.REACT_APP_TMDB_PAGENUM
 
 export const TmdbProvider = ({children}) => {
     const initialState = {
@@ -19,16 +20,24 @@ export const TmdbProvider = ({children}) => {
     const fetchResults = async (select) => {
         setLoading()
 
+        const pageNums = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+
         const paramString = select
 
-        const response = await fetch(`${TMDB_URL}=${TMDB_TOKEN}${TMDB_EXCLUDE}${paramString}`)
+        // const response = await fetch(`${TMDB_URL}=${TMDB_TOKEN}${TMDB_EXCLUDE}${paramString}`)
 
-        const data = await response.json()
+        const responses = await Promise.all(
+            pageNums.map(async pageNum => {
+                const res = await fetch(`${TMDB_URL}=${TMDB_TOKEN}${TMDB_EXCLUDE}${paramString}${TMDB_PAGENUM}${pageNum}`).then(res => res.json()).then(data => console.log(data.results))
+            })
+        )
 
-        dispatch({
-            type: "GET_RESULTS",
-            payload: data.results,
-        })
+        // const data = await responses.json()
+
+        // dispatch({
+        //     type: "GET_RESULTS",
+        //     payload: data.results,
+        // })
     }    
     
     const reorderResults = async (order) => {
