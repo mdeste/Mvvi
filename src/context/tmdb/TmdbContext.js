@@ -26,16 +26,11 @@ export const TmdbProvider = ({children}) => {
 
         // const response = await fetch(`${TMDB_URL}=${TMDB_TOKEN}${TMDB_EXCLUDE}${paramString}`)
 
-        const responses = await Promise.all(
-            pageNums.map(async pageNum => {
-                const res = await fetch(`${TMDB_URL}=${TMDB_TOKEN}${TMDB_EXCLUDE}${paramString}${TMDB_PAGENUM}${pageNum}`).then(res => res.json()).then(data => (dispatch({
-                    type: "GET_RESULTS",
-                    payload: data.results,
-                })))
+        const responses = pageNums.map(async pageNum => {
+                const res = await fetch(`${TMDB_URL}=${TMDB_TOKEN}${TMDB_EXCLUDE}${paramString}${TMDB_PAGENUM}${pageNum}`).then(res => res.json()).then(data => console.log(data.results))
             })
-        )
-
-        // const data = await responses.json()
+        
+        // const data = await response.json()
 
         // dispatch({
         //     type: "GET_RESULTS",
