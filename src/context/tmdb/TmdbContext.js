@@ -20,22 +20,16 @@ export const TmdbProvider = ({children}) => {
     const fetchResults = async (select) => {
         setLoading()
 
-        const pageNums = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
-
         const paramString = select
 
-        // const response = await fetch(`${TMDB_URL}=${TMDB_TOKEN}${TMDB_EXCLUDE}${paramString}`)
+        const response = await fetch(`${TMDB_URL}=${TMDB_TOKEN}${TMDB_EXCLUDE}${paramString}`)
 
-        const responses = pageNums.map(async pageNum => {
-                const res = await fetch(`${TMDB_URL}=${TMDB_TOKEN}${TMDB_EXCLUDE}${paramString}${TMDB_PAGENUM}${pageNum}`).then(res => res.json()).then(data => console.log(data.results))
-            })
-        
-        // const data = await response.json()
+        const data = await response.json()
 
-        // dispatch({
-        //     type: "GET_RESULTS",
-        //     payload: data.results,
-        // })
+        dispatch({
+            type: "GET_RESULTS",
+            payload: data.results,
+        })
     }    
     
     const reorderResults = async (order) => {
@@ -54,6 +48,23 @@ export const TmdbProvider = ({children}) => {
         })
     }
 
+    const moreResults = async () => {
+        setLoading()
+
+        const paramString1 = document.cookie
+
+        let pageNum = 2
+
+        const response = await fetch(`${TMDB_URL}=${TMDB_TOKEN}${TMDB_EXCLUDE}${paramString1}${TMDB_PAGENUM}${pageNum}`)
+
+        const data = await response.json()
+
+        dispatch({
+            type: "MORE_RESULTS",
+            payload: data.results,
+        })
+    }
+
     // Set Loading
     const setLoading = () => dispatch({
         type: "SET_LOADING"
@@ -64,6 +75,7 @@ export const TmdbProvider = ({children}) => {
         loading: state.loading,
         fetchResults,
         reorderResults,
+        moreResults,
     }}>
         {children}
     </TmdbContext.Provider>

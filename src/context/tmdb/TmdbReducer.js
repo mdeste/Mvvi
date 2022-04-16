@@ -17,6 +17,12 @@ const TmdbReducer = (state, action) => {
                 ...state,
                 loading: true
             }
+        case "MORE_RESULTS": 
+            return {
+                ...state,
+                results: action.payload,
+                loading: false
+            }
         default: 
             return state
     }
