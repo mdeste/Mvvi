@@ -3,7 +3,7 @@ import { toast } from 'react-toastify'
 import TmdbContext from '../../context/tmdb/TmdbContext'
 
 function MoreResults() {
-  const [pageNum, setPageNum] = useState()
+  let [pageNum, setPageNum] = useState(1)
 
   const { moreResults } = useContext(TmdbContext)
 
@@ -18,13 +18,15 @@ function MoreResults() {
     ) {
       toast.error('Please select a search parameter from the dropdown list!')
   } else {
-    moreResults()
+    setPageNum(prevState => prevState + 1)
+
+    moreResults(pageNum)
   }
   }
   return (
     <div className="moreResultsBar">
 			<button type="button" className="moreResultsButton" onClick={loadMoreResults}>MORE RESULTS</button>
-	</div>
+	  </div>
   )
 }
 export default MoreResults

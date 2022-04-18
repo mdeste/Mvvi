@@ -48,14 +48,14 @@ export const TmdbProvider = ({children}) => {
         })
     }
 
-    const moreResults = async () => {
+    const moreResults = async (pageNum) => {
         setLoading()
 
         const paramString1 = document.cookie
 
-        let pageNum = 2
+        let paramString2 = pageNum+1
 
-        const response = await fetch(`${TMDB_URL}=${TMDB_TOKEN}${TMDB_EXCLUDE}${paramString1}${TMDB_PAGENUM}${pageNum}`)
+        const response = await fetch(`${TMDB_URL}=${TMDB_TOKEN}${TMDB_EXCLUDE}${paramString1}${TMDB_PAGENUM}${paramString2}`)
 
         const data = await response.json()
 
