@@ -22,6 +22,12 @@ const TmdbReducer = (state, action) => {
                 results: [...(state.results), ...action.payload],
                 loading: false
             }
+        case "GET_MOVIE":
+            return {
+                ...state, 
+                movie: action.payload,
+                loading: false
+            }
         default: 
             return state
     }

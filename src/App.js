@@ -25,7 +25,7 @@ function App() {
       <SiteHeaderLogo />
         <Routes>
           <Route path='/' element={<Home />} />
-          <Route path='/movie/:original_title' element={<Movie />} />
+          <Route path='/movie/:id' element={<Movie />} />
           <Route path='/*' element={<NotFound />}/>
           <Route path='/profile' element={<PrivateRoute />}>
             <Route path='/profile' element={<Profile />} />

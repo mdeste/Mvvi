@@ -7,10 +7,13 @@ const TMDB_URL = process.env.REACT_APP_TMDB_URL
 const TMDB_TOKEN = process.env.REACT_APP_TMDB_TOKEN
 const TMDB_EXCLUDE = process.env.REACT_APP_TMDB_EXCLUDE
 const TMDB_PAGENUM = process.env.REACT_APP_TMDB_PAGENUM
+const TMDB_SINGLEMOVIEURL = process.env.REACT_APP_TMDB_SINGLEMOVIEURL
+const TMDB_SINGLEMOVIEKEY = process.env.REACT_APP_TMDB_SINGLEMOVIEKEY
 
 export const TmdbProvider = ({children}) => {
     const initialState = {
         results: [],
+        movie: {},
         loading: false
     }
 
@@ -30,8 +33,9 @@ export const TmdbProvider = ({children}) => {
             type: "GET_RESULTS",
             payload: data.results,
         })
-    }    
+    }
     
+    // Reorder search results    
     const reorderResults = async (order) => {
         setLoading()
 
@@ -48,6 +52,7 @@ export const TmdbProvider = ({children}) => {
         })
     }
 
+    // Get more results
     const moreResults = async (pageNum) => {
         setLoading()
 
@@ -64,6 +69,24 @@ export const TmdbProvider = ({children}) => {
         })
     }
 
+    // Get single movie
+    const getMovie = async (id) => {
+        setLoading()
+
+        const response = await fetch(`${TMDB_SINGLEMOVIEURL}${id}${TMDB_SINGLEMOVIEKEY}=${TMDB_TOKEN}`)
+
+        if(response.status === 404) {
+            window.location = '/*'
+        } else {
+            const data = await response.json()
+
+             dispatch({
+            type: "GET_MOVIE",
+            payload: data,
+        })
+        }
+    }
+
     // Set Loading
     const setLoading = () => dispatch({
         type: "SET_LOADING"
@@ -72,9 +95,11 @@ export const TmdbProvider = ({children}) => {
     return <TmdbContext.Provider value={{
         results: state.results, 
         loading: state.loading,
+        movie: state.movie,
         fetchResults,
         reorderResults,
         moreResults,
+        getMovie,
     }}>
         {children}
     </TmdbContext.Provider>
