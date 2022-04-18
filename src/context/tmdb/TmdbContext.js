@@ -52,7 +52,6 @@ export const TmdbProvider = ({children}) => {
         setLoading()
 
         const paramString1 = document.cookie
-
         let paramString2 = pageNum+1
 
         const response = await fetch(`${TMDB_URL}=${TMDB_TOKEN}${TMDB_EXCLUDE}${paramString1}${TMDB_PAGENUM}${paramString2}`)

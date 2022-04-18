@@ -23,6 +23,9 @@ function ResultsOrder() {
 				toast.error('Please select a search parameter from the dropdown list!')
 		} else {
 			reorderResults(order, select)
+
+      document.cookie = (select, order)
+      document.getElementById("orderSelect").selectedIndex = 0
 		}
 	}
 

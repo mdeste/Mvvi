@@ -5,7 +5,7 @@ import TmdbContext from '../../context/tmdb/TmdbContext'
 function MoreResults() {
   let [pageNum, setPageNum] = useState(1)
 
-  const { moreResults } = useContext(TmdbContext)
+  const { moreResults, select, order } = useContext(TmdbContext)
 
   const loadMoreResults = (e) => {
     e.preventDefault()
