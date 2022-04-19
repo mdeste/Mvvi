@@ -95,13 +95,13 @@ body {
 }
 
 .navbarListItemName {
-  margin-top: 0.25rem;
   color: var(--navbar-text-color);
+  margin-top: 0.25rem;
 }
 
 .navbarListItemNameActive {
-  margin-top: 0.25rem;
   color: var(--text-color-primary);
+  margin-top: 0.25rem;
 }
 
 /* Page Containers & "Main" Div */
@@ -133,15 +133,15 @@ body {
 }
 
 .mainDivPageContent {
-  text-align: center;
   margin-top: 4rem;
+  text-align: center;
   width: 100%;
 }
 
 /* Profile */
 .profileDetailsHeader {
-  display: flex;
   align-items: center;
+  display: flex;
   justify-content: space-evenly;
 }
 
@@ -221,13 +221,13 @@ body {
 
 /* Result Stats & Ordering */
 .resultsOrderAndLength {
+  align-items: flex-start;
   display: inline-flex;
   flex-direction: row;
-  align-items: flex-start;
   justify-content: center;
-  width: 100%;
   margin-bottom: 0;
   padding-bottom: 0;
+  width: 100%;
 }
 
 .orderDropdownContainer {
@@ -276,33 +276,33 @@ body {
 
 /* Movie Page */
 .moviePageContainer {
-  margin: 1rem;
+  align-items: center;
   display: flex;
   flex-direction: column;
-  align-items: center;
   justify-content: center;
+  margin: 1rem;
   margin-bottom: 0;
   padding-bottom: 0;
 }
 
 .moviePagePosterOverview {
+  align-items: flex-start;
   display: inline-flex;
   flex-direction: row;
-  align-items: flex-start;
   margin: 0.2rem;
 }
 
 .moviePagePoster {
-  width: 10rem;
   margin-right: 1.5rem;
   margin-top: 1.5rem;
   padding: 0;
+  width: 10rem;
 }
 
 .movieOverview {
-  text-align: justify;
   font-size: 14px;
   padding: 0;
+  text-align: justify;
 }
 
 @media (min-width: 1024px) {
@@ -330,9 +330,9 @@ body {
 .budgetDetails,
 .revenueDetails {
   display: flex;
-  justify-content: space-between;
-  gap: 5rem;
   flex-direction: row;
+  gap: 5rem;
+  justify-content: space-between;
   margin-bottom: -0.5rem;
 }
 
