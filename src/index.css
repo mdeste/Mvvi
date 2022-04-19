@@ -274,6 +274,72 @@ body {
   font-size: 20px;
 }
 
+/* Movie Page */
+.moviePageContainer {
+  margin: 1rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 0;
+  padding-bottom: 0;
+}
+
+.moviePagePosterOverview {
+  display: inline-flex;
+  flex-direction: row;
+  align-items: flex-start;
+  margin: 0.2rem;
+}
+
+.moviePagePoster {
+  width: 10rem;
+  margin-right: 1.5rem;
+  margin-top: 1.5rem;
+  padding: 0;
+}
+
+.movieOverview {
+  text-align: justify;
+  font-size: 14px;
+  padding: 0;
+}
+
+@media (min-width: 1024px) {
+  .moviePageContainer {
+    width: 50%;
+    margin: 0 auto;
+  }
+
+  .moviePagePoster {
+    width: 13rem;
+  }
+
+  .movieOverview {
+    font-size: 20px;
+  }
+}
+
+.movieDetails {
+  font-size: 14px;
+}
+
+.releaseDate,
+.genreDetails,
+.runTime,
+.budgetDetails,
+.revenueDetails {
+  display: flex;
+  justify-content: space-between;
+  gap: 5rem;
+  flex-direction: row;
+  margin-bottom: -0.5rem;
+}
+
+.linkToTmdb a{
+  color: var(--text-color-primary);
+}
+
 /* About */
 .mainDivAboutContent {
   width: 100%;
