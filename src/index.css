@@ -525,6 +525,16 @@ body {
   right: 0;
 }
 
+.saveRemoveFromListBar {
+  align-items: center;
+  display: flex;
+  justify-content: center;
+  left: 0; 
+  margin-top: -1rem;
+  position: inherit;
+  right: 0;
+}
+
 .changePasswordButton,
 .filterButton,
 .homepageButton,
@@ -532,6 +542,7 @@ body {
 .logInButton,
 .moreResultsButton,
 .profileButton,
+.saveRemoveFromListButton,
 .searchButton,
 .signUpButton,
 .signUpText {
@@ -569,6 +580,21 @@ body {
 }
 
 .changePasswordButton {
+  align-items: center;
+  background-color: var(--primary-highlight-color);
+  border: none;
+  border-radius: 20px;
+  color: var(--button-text-color);
+  display: flex;
+  font-size: 20px;
+  font-family: 'JetBrainsMono-Light';
+  justify-content: center;
+  margin-top: 3rem;
+  padding: 0.5rem;
+  width: 15rem;
+}
+
+.saveRemoveFromListButton {
   align-items: center;
   background-color: var(--primary-highlight-color);
   border: none;
