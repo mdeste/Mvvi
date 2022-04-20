@@ -19,11 +19,9 @@ function Movie() {
     id,
     original_title,
     overview,
-    popularity,
     poster_path,
     release_date,
     runtime,
-    vote_average
   } = movie
 
   if(loading) {
