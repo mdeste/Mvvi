@@ -1,14 +1,54 @@
-import {useState, useContext} from 'react'
+import {useState, useEffect, useContext, useRef} from 'react'
+import {getAuth, onAuthStateChanged} from 'firebase/auth'
 import {useAuthStatus} from '../../hooks/useAuthStatus'
 import {toast} from 'react-toastify'
 import TmdbContext from '../../context/tmdb/TmdbContext'
 
 function SaveResult() {
+  const [firestoreData, setFirestoreData] = useState({
+    id: 0,
+  })
+
+  const {movie} = useContext(TmdbContext)
+
+  const {
+    id, 
+    poster_path,
+    original_title,
+    release_date,
+    vote_average
+  } = movie
+
+  const auth = getAuth()
+
+  const isMounted = useRef(true)
+
+  useEffect(() => {
+    if(isMounted) {
+      onAuthStateChanged(auth, (user) => {
+        if(user) {
+          setFirestoreData({...firestoreData, userRef: user.uid})
+        } else {
+          toast.error("error")
+        }
+      })
+    }
+
+    return () => {
+      isMounted.current = false
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [isMounted])
+
     const {loggedIn} = useAuthStatus()
 
     const addToWatchlist = () => {
       if(!loggedIn) {
         toast.error("Please log in to save a film to your list.")
+      } else {
+        toast.success("Movie added to your watchlist!")
+        console.log(id)
+        console.log(poster_path)
       }
     }
 

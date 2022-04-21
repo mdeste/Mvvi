@@ -93,6 +93,7 @@ export const TmdbProvider = ({children}) => {
     })
 
     return <TmdbContext.Provider value={{
+        id: state.id,
         results: state.results, 
         loading: state.loading,
         movie: state.movie,
