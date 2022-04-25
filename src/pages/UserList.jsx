@@ -1,9 +1,41 @@
-import {Link} from 'react-router-dom'
+import {Link, useNavigate} from 'react-router-dom'
+import { useEffect, useState } from 'react'
 import {useAuthStatus} from '../hooks/useAuthStatus'
+import {updateDoc, doc, collection, getDocs, query, where, orderBy} from 'firebase/firestore'
+import { db } from '../firebase.config'
 import Spinner from '../components/Spinner'
 
 function UserList() {
-  const {loggedIn, checkingStatus} = useAuthStatus()
+  const [loading, setLoading] = useState(true)
+  const [listArray, setListArray] = useState(null)
+  
+  const {loggedIn, checkingStatus, uid} = useAuthStatus()
+
+  useEffect(() => {
+    const fetchUserWatchlist = async () => {
+      const movieWatchlist = collection(db, 'movieLists')
+
+      const q = query(movieWatchlist, 
+        where('userRef', '==', uid), 
+        orderBy('timestamp', 'desc'))
+
+        const querySnap = await getDocs(q)
+
+        let listArray = []
+
+        querySnap.forEach((doc) => {
+          return listArray.push({
+            id: doc.id,
+            data: doc.data()
+          })
+        })
+
+        setListArray(listArray)
+        setLoading(false)
+    }
+
+    fetchUserWatchlist()
+  }, [uid])
 
   if(checkingStatus) {
     return <Spinner />
