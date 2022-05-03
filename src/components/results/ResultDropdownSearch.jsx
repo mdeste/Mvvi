@@ -1,5 +1,5 @@
 import {useState, useContext} from 'react'
-import { toast } from 'react-toastify'
+import {toast} from 'react-toastify'
 import TmdbContext from '../../context/tmdb/TmdbContext'
 
 function ResultDropdownSearch() {

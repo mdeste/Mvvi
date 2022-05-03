@@ -1,8 +1,8 @@
-import {Link, useNavigate, useParams} from 'react-router-dom'
-import { useEffect, useState } from 'react'
+import {Link} from 'react-router-dom'
+import {useEffect, useState} from 'react'
 import {useAuthStatus} from '../hooks/useAuthStatus'
-import {updateDoc, doc, collection, getDoc, getDocs, query, where, orderBy} from 'firebase/firestore'
-import { db } from '../firebase.config'
+import {doc, collection, getDocs, query, where, orderBy} from 'firebase/firestore'
+import {db} from '../firebase.config'
 import Spinner from '../components/Spinner'
 import WatchlistItem from '../components/watchlist/WatchlistItem'
 

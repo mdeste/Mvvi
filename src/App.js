@@ -1,5 +1,6 @@
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
-import { ToastContainer } from 'react-toastify'
+import {BrowserRouter as Router, Routes, Route} from 'react-router-dom'
+import {ToastContainer} from 'react-toastify'
+import {TmdbProvider} from './context/tmdb/TmdbContext'
 import 'react-toastify/dist/ReactToastify.css'
 import Navbar from './components/Navbar'
 import PrivateRoute from './components/PrivateRoute'
@@ -15,7 +16,7 @@ import Profile from './pages/Profile'
 import SignIn from './pages/SignIn'
 import SignUp from './pages/SignUp'
 import UserList from './pages/UserList'
-import {TmdbProvider} from './context/tmdb/TmdbContext'
+
 
 function App() {
   return (

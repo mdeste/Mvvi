@@ -1,11 +1,11 @@
 import {useState, useContext} from 'react'
-import { toast } from 'react-toastify'
+import {toast} from 'react-toastify'
 import TmdbContext from '../../context/tmdb/TmdbContext'
 
 function ResultsOrder() {
   const [order, setOrder] = useState('')
 
-  const { reorderResults, select } = useContext(TmdbContext)
+  const {reorderResults, select} = useContext(TmdbContext)
 
   const changeOrder = (e) => setOrder(
     document.getElementById('orderSelect').value

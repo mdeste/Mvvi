@@ -81,7 +81,7 @@ body {
   align-items: center;
   display: flex;
   font-family: 'PP Agrandir Text';
-  font-size: 16px;
+  font-size: 1rem;
   justify-content: space-evenly;
   margin: 0;
   padding: 0;
@@ -128,7 +128,7 @@ body {
 
 .pageParagraph {
   display: inline-flex;
-  font-size: 14px;
+  font-size: 0.875rem;
   margin-bottom: 3rem;
 }
 
@@ -174,7 +174,7 @@ body {
   color: var(--button-text-color);
   cursor: pointer;
   display: flex;
-  font-size: 20px;
+  font-size: 1.25rem;
   font-family: 'JetBrainsMono-Light';
   justify-content: center;
   margin-bottom: -1rem;
@@ -199,7 +199,7 @@ body {
   background-size: 1.4em;
   border: transparent;
   color: var(--text-color-primary);
-  font-size: 20px;
+  font-size: 1.25rem;
   font-family: 'JetBrainsMono-Light';
   height: 2.5em;
   margin: 0;
@@ -243,7 +243,7 @@ body {
   background-size: 1.4em;
   border: transparent;
   color: var(--text-color-primary);
-  font-size: 20px;
+  font-size: 1.25rem;
   font-family: 'JetBrainsMono-Light';
   height: 2.5em;
   margin: 0;
@@ -271,7 +271,7 @@ body {
 }
 
 .resultStatsText {
-  font-size: 20px;
+  font-size: 1.25rem;
 }
 
 /* Movie Page */
@@ -300,7 +300,7 @@ body {
 }
 
 .movieOverview {
-  font-size: 14px;
+  font-size: 0.875rem;
   padding: 0;
   text-align: justify;
 }
@@ -316,12 +316,12 @@ body {
   }
 
   .movieOverview {
-    font-size: 20px;
+    font-size: 1.25rem;
   }
 }
 
 .movieDetails {
-  font-size: 14px;
+  font-size: 0.875rem;
 }
 
 .releaseDate,
@@ -382,7 +382,7 @@ body {
   border: 1.6px var(--text-color-primary);
   border-style: hidden hidden solid hidden;
   font-family: 'JetBrainsMono-Light';
-  font-size: 14px;
+  font-size: 0.875rem;
   height: 2rem;
   margin-left: 2rem;
   padding-right: 8rem;
@@ -436,7 +436,7 @@ body {
 .signUpLink {
   color: var(--text-color-primary);
   cursor: pointer;
-  font-size: 12px;
+  font-size: 0.75rem;
 }
 
 .changePasswordTextDiv,
@@ -448,13 +448,13 @@ body {
 .changePasswordTextDiv,
 .changePasswordLink {
   margin-top: 3.5rem;
-  font-size: 16px;
+  font-size: 1rem;
 }
 
 .passwordResetLink {
   color: var(--text-color-primary);
   cursor: pointer;
-  font-size: 16px;
+  font-size: 1rem;
   margin-top: 3.5rem;
   text-decoration: underline;
 }
@@ -569,7 +569,7 @@ body {
   border-radius: 20px;
   color: var(--button-text-color);
   display: flex;
-  font-size: 20px;
+  font-size: 1.25rem;
   font-family: 'JetBrainsMono-Light';
   justify-content: center;
   padding: 0.5rem;
@@ -577,7 +577,7 @@ body {
 }
 
 .filterButton {
-  font-size: 10px;
+  font-size: 0.625rem;
 }
 
 .changePasswordButton {
@@ -587,7 +587,7 @@ body {
   border-radius: 20px;
   color: var(--button-text-color);
   display: flex;
-  font-size: 20px;
+  font-size: 1.25rem;
   font-family: 'JetBrainsMono-Light';
   justify-content: center;
   margin-top: 3rem;
@@ -602,7 +602,7 @@ body {
   border-radius: 20px;
   color: var(--button-text-color);
   display: flex;
-  font-size: 20px;
+  font-size: 1.25rem;
   font-family: 'JetBrainsMono-Light';
   justify-content: center;
   margin-top: 3rem;

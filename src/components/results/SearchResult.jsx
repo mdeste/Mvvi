@@ -1,9 +1,9 @@
-import { Link } from 'react-router-dom'
-import {useState, useEffect, useContext, useRef} from 'react'
-import PropTypes from 'prop-types'
+import {Link} from 'react-router-dom'
+import {useState, useEffect} from 'react'
 import {ReactComponent as HeartIcon} from '../../assets/svg/heartIcon.svg'
-import {setDoc, deleteDoc, serverTimestamp, doc, getDoc} from 'firebase/firestore'
-import { db } from '../../firebase.config'
+import {doc, getDoc} from 'firebase/firestore'
+import {db} from '../../firebase.config'
+import PropTypes from 'prop-types'
 
 
 function SearchResult({results: {original_title, poster_path, release_date, vote_average, id}}) {
@@ -11,19 +11,18 @@ function SearchResult({results: {original_title, poster_path, release_date, vote
 
     useEffect(() => {
         const checkDocExists = async () => {
-          const docRef = doc(db, "movieLists", original_title);
-          const docSnap = await getDoc(docRef); 
+          const docRef = doc(db, "movieLists", original_title)
+          const docSnap = await getDoc(docRef) 
           
           if (docSnap.exists()) {
             setDocExists(true)
-            console.log(docSnap.data())
           } else {
            setDocExists(false)
           }
         }
     
         checkDocExists()
-      }, [])
+      }, [original_title])
 
   return (
     <main className="mainResult">

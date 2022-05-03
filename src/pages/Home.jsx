@@ -1,4 +1,4 @@
-import { useContext } from 'react'
+import {useContext} from 'react'
 import TmdbContext from '../context/tmdb/TmdbContext'
 import SearchResults from '../components/SearchResults'
 import ResultDropdownSearch from '../components/results/ResultDropdownSearch'

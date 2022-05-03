@@ -3,7 +3,7 @@ import {Link, useNavigate} from 'react-router-dom'
 import {getAuth, createUserWithEmailAndPassword, updateProfile} from 'firebase/auth'
 import {db} from '../firebase.config'
 import {setDoc, doc, serverTimestamp} from 'firebase/firestore'
-import { toast } from 'react-toastify'
+import {toast} from 'react-toastify'
 import OAuth from '../components/OAuth'
 import visibilityIcon from '../assets/svg/visibilityIcon.svg'
 

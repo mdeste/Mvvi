@@ -1,8 +1,7 @@
 import {Link} from 'react-router-dom'
-import {useState, useEffect, useContext, useRef} from 'react'
-import PropTypes from 'prop-types'
-import {setDoc, deleteDoc, serverTimestamp, doc, getDoc} from 'firebase/firestore'
-import { db } from '../../firebase.config'
+import {useState, useEffect} from 'react'
+import {doc, getDoc} from 'firebase/firestore'
+import {db} from '../../firebase.config'
 import {ReactComponent as HeartIcon} from '../../assets/svg/heartIcon.svg'
 
 function WatchlistItem({listArray}) {
@@ -10,21 +9,21 @@ function WatchlistItem({listArray}) {
 
     useEffect(() => {
         const checkDocExists = async () => {
-          const docRef = doc(db, "movieLists", listArray?.data?.original_title);
-          const docSnap = await getDoc(docRef); 
+          const docRef = doc(db, "movieLists", listArray?.data?.original_title)
+          const docSnap = await getDoc(docRef) 
           
           if (docSnap.exists()) {
             setDocExists(true)
-            console.log(docSnap.data())
           } else {
            setDocExists(false)
           }
         }
     
         checkDocExists()
-      }, [])
+      }, [listArray?.data?.original_title])
 
   return (
+    <div className="mainDivExploreContent">
     <main className="mainResult">
         <div className="searchResultContainer">
             <div className="searchResultTitleLink">
@@ -42,6 +41,7 @@ function WatchlistItem({listArray}) {
             </div>
         </div>
     </main>
+    </div>
   )
 }
 export default WatchlistItem

@@ -46,8 +46,6 @@ function SaveResult() {
             userRef: user.uid,
             addedToWatchlist: true,
           })
-        } else {
-          toast.error("Authentication error. Please check your login credentials and try again.")
         }
       })
     }
@@ -60,19 +58,18 @@ function SaveResult() {
 
   useEffect(() => {
     const checkDocExists = async () => {
-      const docRef = doc(db, "movieLists", original_title);
-      const docSnap = await getDoc(docRef); 
+      const docRef = doc(db, "movieLists", original_title)
+      const docSnap = await getDoc(docRef) 
       
       if (docSnap.exists()) {
         setDocExists(true)
-        console.log(docSnap.data())
       } else {
        setDocExists(false)
       }
     }
 
     checkDocExists()
-  }, [])
+  }, [original_title])
 
   const firestoreDataCopy = {
     ...firestoreData, 
@@ -99,7 +96,7 @@ function SaveResult() {
       toast.success("Successfully deleted movie from watchlist!")
     }
 
-  if (docExists == true) {
+  if (docExists === true) {
     return (
         <div className="saveRemoveFromListBar">
             <button type="submit" id="saveToList" className="saveRemoveFromListButton" onClick={removeFromWatchlist}>REMOVE FROM WATCHLIST</button>
