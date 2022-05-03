@@ -61,8 +61,6 @@ function UserList() {
         <p className="pageHeader">WATCHLIST</p>
       </header>
 
-      {/* <p>{listArray[0].data.id}</p> */}
-
       {!loading && listArray?.length > 0 && (
         <>
           <ul className="movieList">

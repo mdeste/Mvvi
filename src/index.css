@@ -492,7 +492,7 @@ body {
   justify-content: center;
   left: 0; 
   margin-bottom: 8rem;
-  position: absolute;
+  position: relative;
   right: 0;
 }
 
@@ -530,6 +530,7 @@ body {
   display: flex;
   justify-content: center;
   left: 0; 
+  margin-bottom: 1rem;
   margin-top: -1rem;
   position: inherit;
   right: 0;

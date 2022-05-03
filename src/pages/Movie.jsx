@@ -3,7 +3,6 @@ import {useParams, Link} from 'react-router-dom'
 import TmdbContext from '../context/tmdb/TmdbContext'
 import Spinner from '../components/Spinner'
 import SaveResult from '../components/results/SaveResult'
-import RemoveResult from '../components/results/RemoveResult'
 
 function Movie() {
   const {getMovie, movie, loading} = useContext(TmdbContext)
@@ -69,9 +68,7 @@ function Movie() {
         <div className="linkToTmdb">
             <p className="linkToTmdbText"><a href={`${process.env.REACT_APP_TMDB_TITLEURL}${id}`} target="_blank" rel="noopener noreferrer">MORE INFORMATION ON TMDB</a></p>
           </div>
-          {/* add/remove from list component - check if ID present in user's firestore and display correct component */}
           <SaveResult />
-          {/* <RemoveResult />  */}
         <div className="homepageBar">
           <Link to="/" className="homepageLink">
             <button className="homepageButton">HOMEPAGE</button>

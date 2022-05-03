@@ -1,6 +1,6 @@
 import {useState, useEffect, useContext, useRef} from 'react'
 import {getAuth, onAuthStateChanged} from 'firebase/auth'
-import {addDoc, collection, serverTimestamp} from 'firebase/firestore'
+import {setDoc, deleteDoc, serverTimestamp, doc, getDoc} from 'firebase/firestore'
 import {useAuthStatus} from '../../hooks/useAuthStatus'
 import {db} from '../../firebase.config'
 import {toast} from 'react-toastify'
@@ -13,7 +13,9 @@ function SaveResult() {
     original_title: '',
     release_date: '',
     vote_average: 0,
+    addedToWatchlist: false,
   })
+  const [docExists, setDocExists] = useState(false)
 
   const {movie} = useContext(TmdbContext)
 
@@ -41,7 +43,8 @@ function SaveResult() {
             original_title: original_title,
             release_date: release_date,
             vote_average: vote_average, 
-            userRef: user.uid
+            userRef: user.uid,
+            addedToWatchlist: true,
           })
         } else {
           toast.error("Authentication error. Please check your login credentials and try again.")
@@ -55,6 +58,23 @@ function SaveResult() {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [isMounted])
 
+  useEffect(() => {
+    const checkDocExists = async () => {
+      const docRef = doc(db, "movieLists", original_title);
+      const docSnap = await getDoc(docRef); 
+      
+      if (docSnap.exists()) {
+        setDocExists(true)
+        console.log(docSnap.data())
+      } else {
+        // doc.data() will be undefined in this case
+       setDocExists(false)
+      }
+    }
+
+    checkDocExists()
+  }, [])
+
   const firestoreDataCopy = {
     ...firestoreData, 
     timestamp: serverTimestamp()
@@ -65,15 +85,33 @@ function SaveResult() {
       if(!loggedIn) {
         toast.error("Please log in to save a film to your list.")
       } else {
-        await addDoc(collection(db, 'movieLists'), firestoreDataCopy)
+        await setDoc(doc(db, 'movieLists', original_title), firestoreDataCopy)
         toast.success("Movie added to your watchlist!")
+        setDocExists(true)
       }
     }
 
-  return (
-    <div className="saveRemoveFromListBar">
-        <button type="submit" id="saveToList" className="saveRemoveFromListButton" onClick={addToWatchlist}>ADD TO WATCHLIST</button>
-    </div>
-  )
+    const removeFromWatchlist = async (e) => {
+      e.preventDefault()
+      if (window.confirm("Are you sure you wish to delete this movie from your watchlist?")) {
+        await deleteDoc(doc(db, 'movieLists', original_title))
+      }
+      setDocExists(false)
+      toast.success("Successfully deleted movie from watchlist!")
+    }
+
+  if (docExists == true) {
+    return (
+        <div className="saveRemoveFromListBar">
+            <button type="submit" id="saveToList" className="saveRemoveFromListButton" onClick={removeFromWatchlist}>REMOVE FROM WATCHLIST</button>
+        </div>
+    )
+  } else {
+    return (
+      <div className="saveRemoveFromListBar">
+          <button type="submit" id="saveToList" className="saveRemoveFromListButton" onClick={addToWatchlist}>ADD TO WATCHLIST</button>
+      </div>
+    )
+  }
 }
 export default SaveResult
