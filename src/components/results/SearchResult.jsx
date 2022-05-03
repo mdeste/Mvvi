@@ -1,8 +1,29 @@
 import { Link } from 'react-router-dom'
+import {useState, useEffect, useContext, useRef} from 'react'
 import PropTypes from 'prop-types'
-import heartIcon from '../../assets/svg/heartIcon.svg'
+import {ReactComponent as HeartIcon} from '../../assets/svg/heartIcon.svg'
+import {setDoc, deleteDoc, serverTimestamp, doc, getDoc} from 'firebase/firestore'
+import { db } from '../../firebase.config'
+
 
 function SearchResult({results: {original_title, poster_path, release_date, vote_average, id}}) {
+    const [docExists, setDocExists] = useState(false)
+
+    useEffect(() => {
+        const checkDocExists = async () => {
+          const docRef = doc(db, "movieLists", original_title);
+          const docSnap = await getDoc(docRef); 
+          
+          if (docSnap.exists()) {
+            setDocExists(true)
+            console.log(docSnap.data())
+          } else {
+           setDocExists(false)
+          }
+        }
+    
+        checkDocExists()
+      }, [])
 
   return (
     <main className="mainResult">
@@ -10,7 +31,7 @@ function SearchResult({results: {original_title, poster_path, release_date, vote
             <div className="searchResultTitleLink">
                 <Link className="searchResultLink" to={`/movie/${id}`}>{original_title}</Link>
             </div>
-            <img src={heartIcon} alt="Heart Icon" className="heartIcon" />
+            <HeartIcon className="heartIcon" style={{fill: docExists ? "#231F20" : "#F0F0F2"}}/>
             <div className="searchResultPosterContainer">
                 <img src={`${process.env.REACT_APP_TMDB_IMGURL}${poster_path}`} alt="Movie Poster" className="searchResultPoster"/>
             </div>

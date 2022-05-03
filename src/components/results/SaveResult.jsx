@@ -67,7 +67,6 @@ function SaveResult() {
         setDocExists(true)
         console.log(docSnap.data())
       } else {
-        // doc.data() will be undefined in this case
        setDocExists(false)
       }
     }

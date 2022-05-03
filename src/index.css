@@ -680,10 +680,6 @@ body {
   padding-left: 1em;
 }
 
-.heartIcon:hover {
-  cursor: pointer;
-}
-
 .searchResultReleaseDate {
   align-self: start;
   color: var(--button-text-color);
