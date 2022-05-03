@@ -491,10 +491,14 @@ body {
   display: flex;
   justify-content: center;
   left: 0; 
-  margin-bottom: 8rem;
+  margin-bottom: 5rem;
   margin-top: 1rem;
   position: relative;
   right: 0;
+}
+
+.profileBar {
+  margin-top: 10rem;
 }
 
 .moreResultsBar {
