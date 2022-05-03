@@ -12,21 +12,21 @@ Users are able to log in and add individual search results to a personal list wh
 
 ### Search 
 
-Search for films using the parameters available on the explore (home) page and hitting the "SEARCH!" button. Results can be filtered by release date, title, and rating (with specific ascending and descending filters for each). Hit the "MORE RESULTS" button to load another 20 results with your current parameters and filters selected. 
+Search for films using the parameters available on the explore (home) page and hitting the `SEARCH!` button. Results can be filtered by release date, title, and rating (with specific ascending and descending filters for each). Select the filter you would like from the dropdown and click on the `FILTER RESULTS` button to re-arrange the results with the selected filter. Hit the `MORE RESULTS` button to load another 20 results with your current parameters and filters selected. 
 
 
 ### Account creation
 
-To create a watchlist, you must first create an account. Click on the "Profile" link in the navigation bar, and then the "DON'T HAVE AN ACCOUNT? SIGN UP HERE!" link, and enter a username, valid email address and secure password, or alternatively log in using your Google Account with the OAuth link. 
+To create a watchlist, you must first create an account. Click on the `Profile` link on the navigation bar, and then the `DON'T HAVE AN ACCOUNT? SIGN UP HERE!` link, and enter a username, valid email address and secure password, or alternatively create an account with your Google account by using the OAuth link.
 
-To log out, navigate to your profile using the link in the navbar, and click the "LOG OUT" button below the page title to log out and be returned to the explore page. 
+To log out, navigate to your profile using the link in the navbar, and click the `LOG OUT` button below the page title to log out and be returned to the explore page. 
 
 
 ### Watchlist creation and management
 
-Upon successful account creation, you'll be redirected to the explore page. Search for some movies, and when you find one you'd like to add to your watchlist, click on the title. This will take you to the specific page for that title, in which you'll find more details about the film and a link to the TMDB page. Click the "ADD TO WATCHLIST" button below this to add the movie to your watchlist. You should see a popup if adding the film to your watchlist was successful. You can navigate to the watchlist using the "Watchlist" button in the navbar.
+Upon successful account creation, you'll be redirected to the explore page. Search for some movies, and when you find one you'd like to add to your watchlist, click on the title. This will take you to the specific page for that title, in which you'll find more details about the film and a link to the TMDB page. Click the `ADD TO WATCHLIST` button below this to add the movie to your watchlist. You should see a popup if adding the film to your watchlist was successful. You can navigate to the watchlist using the `Watchlist` button in the navbar.
 
-To remove a film from your watchlist, click back into the title via your watchlist (or the explore page), and click the "REMOVE FROM WATCHLIST" button. Click "OK" when you're prompted to by your browser, and if successful, you should see a popup noting a successful deletion. 
+To remove a film from your watchlist, click back into the title via your watchlist (or the explore page), and click the `REMOVE FROM WATCHLIST` button. Click `OK` when you're prompted to by your browser, and if successful, you should see a popup notifying you of a successful deletion. 
 
 Titles you have added to your watchlist will be marked by the heart icon in the right corner of the search results turning black, whilst titles that are not yet on your watchlist will be marked with a white heart.
 
