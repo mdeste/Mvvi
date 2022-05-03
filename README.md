@@ -7,17 +7,20 @@
 Users are able to log in and add individual search results to a personal list which can be modified at any time.
 
 
+
 ## Usage
 
 ### Search 
 
 Search for films using the parameters available on the explore (home) page and hitting the "SEARCH!" button. Results can be filtered by release date, title, and rating (with specific ascending and descending filters for each). Hit the "MORE RESULTS" button to load another 20 results with your current parameters and filters selected. 
 
+
 ### Account creation
 
 To create a watchlist, you must first create an account. Click on the "Profile" link in the navigation bar, and then the "DON'T HAVE AN ACCOUNT? SIGN UP HERE!" link, and enter a username, valid email address and secure password, or alternatively log in using your Google Account with the OAuth link. 
 
 To log out, navigate to your profile using the link in the navbar, and click the "LOG OUT" button below the page title to log out and be returned to the explore page. 
+
 
 ### Watchlist creation and management
 
@@ -26,6 +29,7 @@ Upon successful account creation, you'll be redirected to the explore page. Sear
 To remove a film from your watchlist, click back into the title via your watchlist (or the explore page), and click the "REMOVE FROM WATCHLIST" button. Click "OK" when you're prompted to by your browser, and if successful, you should see a popup noting a successful deletion. 
 
 Titles you have added to your watchlist will be marked by the heart icon in the right corner of the search results turning black, whilst titles that are not yet on your watchlist will be marked with a white heart.
+
 
 
 ## The Fine Print
