@@ -61,7 +61,7 @@ function SaveResult() {
 
   useEffect(() => {
     const getDocData = async () => {
-      const q1 = query(collection(db, "movieLists"), where("id", "==", id).where("userRef", "==", uid))
+      const q1 = query(collection(db, "movieLists"), where("id", "==", id), where("userRef", "==", uid))
 
         const querySnapshot = await getDocs(q1);
         querySnapshot.forEach((doc) => {
