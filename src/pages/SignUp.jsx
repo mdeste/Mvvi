@@ -84,7 +84,7 @@ function SignUp() {
         </div>
 
         <div className="emailInputDiv">
-          <p className="pageParagraph">&nbsp;&nbsp;&nbsp;Email:</p>
+          <p className="emailPasswordText">&nbsp;&nbsp;&nbsp;Email:</p>
           <input type="email" 
           className="emailInput" 
           placeholder="Please enter email" 
@@ -94,11 +94,12 @@ function SignUp() {
         </div>
 
         <div className="passwordInputDiv">
-          <p className="pageParagraph">Password:</p>
+          <p className="emailPasswordText">Password:</p>
           <input type={showPassword ? 'text' : 'password'} 
           className="passwordInput" 
           placeholder="Please enter password" 
           id="password" 
+          autoComplete='on'
           value={password} 
           onChange={onChange}/>
           <img src={visibilityIcon} 

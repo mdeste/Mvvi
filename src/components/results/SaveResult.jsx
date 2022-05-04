@@ -1,6 +1,6 @@
 import {useState, useEffect, useContext, useRef} from 'react'
 import {getAuth, onAuthStateChanged} from 'firebase/auth'
-import {setDoc, deleteDoc, serverTimestamp, doc, getDoc} from 'firebase/firestore'
+import {addDoc, collection, deleteDoc, serverTimestamp, doc, getDoc, getDocs, where, query} from 'firebase/firestore'
 import {useAuthStatus} from '../../hooks/useAuthStatus'
 import {db} from '../../firebase.config'
 import {toast} from 'react-toastify'
@@ -15,11 +15,14 @@ function SaveResult() {
     vote_average: 0,
     addedToWatchlist: false,
   })
+
+  const [firestoreId, setFirestoreId] = useState(null)
+
   const [docExists, setDocExists] = useState(false)
 
   const {movie} = useContext(TmdbContext)
 
-  const {loggedIn} = useAuthStatus()
+  const {loggedIn, uid} = useAuthStatus()
 
   const auth = getAuth()
 
@@ -57,8 +60,21 @@ function SaveResult() {
   }, [isMounted])
 
   useEffect(() => {
+    const getDocData = async () => {
+      const q1 = query(collection(db, "movieLists"), where("id", "==", id).where("userRef", "==", uid))
+
+        const querySnapshot = await getDocs(q1);
+        querySnapshot.forEach((doc) => {
+        setFirestoreId(doc.id)
+      });
+    }
+
+    getDocData()
+  }, [firestoreId, id, uid])
+
+  useEffect(() => {
     const checkDocExists = async () => {
-      const docRef = doc(db, "movieLists", original_title)
+      const docRef = doc(db, "movieLists", firestoreId)
       const docSnap = await getDoc(docRef) 
       
       if (docSnap.exists()) {
@@ -69,7 +85,7 @@ function SaveResult() {
     }
 
     checkDocExists()
-  }, [original_title])
+  }, [firestoreId])
 
   const firestoreDataCopy = {
     ...firestoreData, 
@@ -81,7 +97,7 @@ function SaveResult() {
       if(!loggedIn) {
         toast.error("Please log in to save a film to your list.")
       } else {
-        await setDoc(doc(db, 'movieLists', original_title), firestoreDataCopy)
+        await addDoc(collection(db, 'movieLists'), firestoreDataCopy)
         toast.success("Movie added to your watchlist!")
         setDocExists(true)
       }
@@ -90,7 +106,7 @@ function SaveResult() {
     const removeFromWatchlist = async (e) => {
       e.preventDefault()
       if (window.confirm("Are you sure you wish to delete this movie from your watchlist?")) {
-        await deleteDoc(doc(db, 'movieLists', original_title))
+        await deleteDoc(doc(db, 'movieLists', firestoreId))
       }
       setDocExists(false)
       toast.success("Successfully deleted movie from watchlist!")

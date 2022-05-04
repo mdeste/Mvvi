@@ -1,17 +1,37 @@
 import {Link} from 'react-router-dom'
 import {useState, useEffect} from 'react'
 import {ReactComponent as HeartIcon} from '../../assets/svg/heartIcon.svg'
-import {doc, getDoc} from 'firebase/firestore'
+import {collection, doc, getDoc, getDocs, where, query} from 'firebase/firestore'
+import {useAuthStatus} from '../../hooks/useAuthStatus'
 import {db} from '../../firebase.config'
 import PropTypes from 'prop-types'
 
 
 function SearchResult({results: {original_title, poster_path, release_date, vote_average, id}}) {
     const [docExists, setDocExists] = useState(false)
+    const [firestoreId, setFirestoreId] = useState(null)
+
+    const {loggedIn, uid} = useAuthStatus()
 
     useEffect(() => {
+        const getDocData = async () => {
+            if (loggedIn) {
+                const q = query(collection(db, "movieLists"),  where("id", "==", id), where("userRef", "==", uid))
+    
+                const querySnapshot = await getDocs(q);
+                querySnapshot.forEach((doc) => {
+                setFirestoreId(doc.id)
+                console.log(uid)
+              });
+            }
+        }
+    
+        getDocData()
+      }, [firestoreId, id, loggedIn, uid])
+    
+      useEffect(() => {
         const checkDocExists = async () => {
-          const docRef = doc(db, "movieLists", original_title)
+          const docRef = doc(db, "movieLists", firestoreId)
           const docSnap = await getDoc(docRef) 
           
           if (docSnap.exists()) {
@@ -22,7 +42,7 @@ function SearchResult({results: {original_title, poster_path, release_date, vote
         }
     
         checkDocExists()
-      }, [original_title])
+      }, [firestoreId])
 
   return (
     <main className="mainResult">

@@ -1,26 +1,45 @@
 import {Link} from 'react-router-dom'
 import {useState, useEffect} from 'react'
-import {doc, getDoc} from 'firebase/firestore'
-import {db} from '../../firebase.config'
 import {ReactComponent as HeartIcon} from '../../assets/svg/heartIcon.svg'
+import {collection, doc, getDoc, getDocs, where, query} from 'firebase/firestore'
+import {useAuthStatus} from '../../hooks/useAuthStatus'
+import {db} from '../../firebase.config'
 
 function WatchlistItem({listArray}) {
     const [docExists, setDocExists] = useState(false)
+    const [firestoreId, setFirestoreId] = useState(null)
+
+    const {loggedIn, uid} = useAuthStatus()
 
     useEffect(() => {
-        const checkDocExists = async () => {
-          const docRef = doc(db, "movieLists", listArray?.data?.original_title)
-          const docSnap = await getDoc(docRef) 
-          
-          if (docSnap.exists()) {
-            setDocExists(true)
-          } else {
-           setDocExists(false)
-          }
-        }
+      const getDocData = async () => {
+        if(loggedIn) {
+            const q = query(collection(db, "movieLists"), where("id", "==", listArray?.data?.id), where("userRef", "==", uid))
     
-        checkDocExists()
-      }, [listArray?.data?.original_title])
+            const querySnapshot = await getDocs(q);
+            querySnapshot.forEach((doc) => {
+            setFirestoreId(doc.id)
+          });
+        }
+      }
+  
+      getDocData()
+    }, [firestoreId, listArray?.data?.id, loggedIn, uid])
+  
+    useEffect(() => {
+      const checkDocExists = async () => {
+        const docRef = doc(db, "movieLists", firestoreId)
+        const docSnap = await getDoc(docRef) 
+        
+        if (docSnap.exists()) {
+          setDocExists(true)
+        } else {
+         setDocExists(false)
+        }
+      }
+  
+      checkDocExists()
+    }, [firestoreId])
 
   return (
     <div className="mainDivExploreContent">

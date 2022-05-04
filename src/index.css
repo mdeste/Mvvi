@@ -132,8 +132,15 @@ body {
   margin-bottom: 3rem;
 }
 
+.emailPasswordText {
+  display: inline-flex;
+  wrap: nowrap;
+  font-size: 0.875rem;
+  margin-bottom: 3rem;
+}
+
 .mainDivPageContent {
-  margin-top: 4rem;
+  margin-top: 0rem;
   text-align: center;
   width: 100%;
 }
@@ -164,6 +171,7 @@ body {
   display: flex;
   justify-content: center;
   position: relative;
+  margin-bottom: 1rem;
 }
 
 .logOutButton {
@@ -385,7 +393,7 @@ body {
   font-size: 0.875rem;
   height: 2rem;
   margin-left: 2rem;
-  padding-right: 8rem;
+  /* padding-right: 8rem; */
 }
 
 .passwordInputDiv {
@@ -401,7 +409,7 @@ body {
 }
 
 .oAuthCallToAction {
-  padding-top: 3rem;
+  margin-top: -3rem;
 }
 
 .googleLogin {
@@ -420,7 +428,6 @@ body {
   display: flex;
   height: 4rem;
   justify-content: center;
-  margin: 1.5rem;
   padding: 0.75rem;
   width: 4rem;
 }
@@ -495,6 +502,10 @@ body {
   margin-top: 1rem;
   position: relative;
   right: 0;
+}
+
+.homepageBar {
+  padding-bottom: 3rem;
 }
 
 .profileBar {

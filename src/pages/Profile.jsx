@@ -16,6 +16,7 @@ function Profile() {
 
   const onLogout = () => {
     auth.signOut()
+    localStorage.clear();
     toast.success('Logout successful. Redirected to homepage!', {
       autoClose: 1000,
       closeOnClick: false,
