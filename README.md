@@ -21,8 +21,6 @@ Search for films using the parameters available on the explore (home) page and h
 
 To create a watchlist, you must first create an account. Click on the `Profile` link on the navigation bar, and then the `DON'T HAVE AN ACCOUNT? SIGN UP HERE!` link, and enter a username, valid email address and secure password, or alternatively create an account with your Google account by using the OAuth link.
 
-![the sign up page](/src/assets/jpg/siteExampleE.jpg)
-
 To log out, navigate to your profile using the link in the navbar, and click the `LOG OUT` button below the page title to log out and be returned to the explore page. 
 
 If you already have an account but have forgotten your password, click on the `FORGOT PASSWORD` link on the login page. On the Forgot Password page, enter your email address and hit the `SEND PASSWORD RESET LINK!` button. A popup will notify you if the email was successfully sent. Check your e-mail inbox for an email from mvvi-app.firebase.com and follow the instructions in the email to gain access to your account.
