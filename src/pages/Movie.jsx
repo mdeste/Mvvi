@@ -49,10 +49,10 @@ function Movie() {
           {genres && (
             <div className="genreDetails">
               <p className="genreText">
-                GENRES:
+                GENRE:
               </p>
               <p className="genreData">
-                {genres[0].name}, {genres[1].name}
+                {genres[0]?.name}
               </p>
             </div>
           )}
